@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加场地</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div class="wrap" style="height: 700px"><!--登录框的最外部的框框-->
+    <div class="title">
+        添加场地信息
+    </div>
+    <div class="main">
+
+        <input class="input" placeholder="请输入项 目" id="project" type="text"/><br><br>
+        <input class="input"  placeholder="请输入地 址" id="address" type="text"/><br><br>
+        <input class="input" placeholder="请输入价 格" id="price" type="text"/><br><br>
+        <button  onclick="goAddField()" name="sub" id="btn1">添加</button><br><br>
+        <input  id="btn2"  type="reset" value="重置"></input>
+
+    </div>
+    <br><br>
+</div>
+</body>
+<script>
+    function goAddField() {
+        var project = $("#project").val();
+        var address = $("#address").val()
+        var price = $("#price").val();
+        $.post("/addField",{project:project,address:address,price:price},function (res){
+            if (res===true){
+                alert("添加成功")
+            }else {
+                alert("添加失败，请检查数据重试！");
+            }
+        })
+    }
+    function refresh() {
+        window.location.href = "/coachList"
+    }
+</script>
+</html>

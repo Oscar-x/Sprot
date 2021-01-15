@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加用户</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div class="wrap" style="height: 700px"><!--登录框的最外部的框框-->
+    <div class="title">
+        添加用户信息
+    </div>
+    <div class="main">
+
+        <input class="input" placeholder="请输入用户名" id="name" type="text"/><br><br>
+        <input class="input"  placeholder="请输入密码"id="pwd" type="password"/><br><br>
+        <input class="input" placeholder="请输入年龄" id="age" type="text"/><br><br>
+        <select class="input" id="sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select><br><br>
+        <input class="input" placeholder="请输入电话号码" id="phone" type="text"/><br><br>
+        <input class="input" placeholder="请输入邮箱地址" id="email" type="text"/><br><br>
+        <button  onclick="addUser()" name="sub" id="btn1">添加</button><br><br>
+        <input  id="btn2"  type="reset" value="重置"></input>
+
+    </div>
+    <br><br>
+</div>
+
+</body>
+<script>
+    function addUser() {
+        var account = $("#name").val();
+        var user_pwd = $("#pwd").val();
+        var age = $("#age").val();
+        var sex = $("#sex").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        $.post("/addUser",{account:account,user_pwd:user_pwd,age:age,sex:sex,phone:phone,email:email},function (res) {
+            if (res==true){
+                alert("添加成功")
+            }else {
+                alert("添加失败，请检查数据重试！");
+            }
+        })
+    }
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改用户</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div class="wrap" style="height: 700px"><!--登录框的最外部的框框-->
+    <div class="title">
+        管理员信息修改页面
+    </div>
+    <div class="main">
+        <input  type="hidden" id="id" th:value="${admin.id}"><br><br>
+        <input class="input" placeholder="请输入管理员账号" id="name" th:value="${admin.name}"/><br><br>
+        <input class="input"  placeholder="请输入密码" id="pwd"  th:value="${admin.password}"/><br><br>
+        <button  onclick="goupdate()" name="sub" id="btn1">修改</button><br><br>
+        <button id="btn2" name="button"  onclick="javascript:history.back(-1);">返回</button>
+
+    </div>
+    <br><br>
+</div>
+</body>
+<script>
+    function goupdate() {
+        var id=$("#id").val();
+        var name = $("#name").val();
+        var password = $("#pwd").val();
+        $.post("//updateAdmin",{id:id,name:name,password:password},function (res) {
+            if (res===true) {
+                alert("修改成功");
+                window.location.href="/adminList";
+            }else {
+                alert("修改失败，请检查数据重试！");
+            }
+        })
+    }
+</script>
+</html>

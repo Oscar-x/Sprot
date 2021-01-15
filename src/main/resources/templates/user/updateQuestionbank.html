@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改题库信息</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body class="body">
+<div class="wrap" style="height: 700px"><!--登录框的最外部的框框-->
+    <div class="title">
+        修改题库信息
+    </div>
+    <div class="main">
+        <input  type="hidden" id="id" th:value="${questionbank.num_id}"><br><br>
+        <input class="input" placeholder="请输入题目" id="title" th:value="${questionbank.content}"/><br><br>
+        <input class="input"  placeholder="请输入答案选项"id="answer" th:value="${questionbank.correct}"/><br><br>
+        <input class="input" placeholder="请输入选项A" id="a" th:value="${questionbank.optionA}"/><br><br>
+        <input class="input" placeholder="请输入选项B" id="b" th:value="${questionbank.optionB}"/><br><br>
+        <input class="input" placeholder="请输入选项C" id="c" th:value="${questionbank.optionC}"/><br><br>
+        <input class="input" placeholder="请输入选项D" id="d" th:value="${questionbank.optionD}"/><br><br>
+        <button id="btn1" onclick="goupdate()">修改</button><br><br>
+        <button id="btn2" onclick="back()">返回</button>
+    </div>
+    <br><br>
+</div>
+</body>
+<script>
+    function goupdate() {
+        var id=$("#id").val();
+        var title = $("#title").val();
+        var answer = $("#answer").val();
+        var a = $("#a").val();
+        var b = $("#b").val();
+        var c = $("#c").val();
+        var d = $("#d").val();
+        $.post("/updateQuestion",{num_id:id,content:title,correct:answer,optionA:a,optionB:b,optionC:c,optionD:d,},function (res) {
+            if (res==true) {
+                alert("修改成功");
+                window.location.href="/questionList";
+            }else {
+                alert("修改失败，请检查数据重试！");
+            }
+        })
+    }
+    function back() {
+        window.location.href="/questionList";
+    }
+</script>
+</html>

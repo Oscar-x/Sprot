@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jz.table.dao.UserDao">
+    <select id="FindAll" resultType="com.jz.table.entity.UserInfo">
+      select * from userinfo
+  </select>
+
+    <insert id="adduser"  parameterType="com.jz.table.entity.UserInfo">
+       INSERT INTO userinfo(account,user_pwd,age,sex,phone,email) VALUES (#{account},#{user_pwd},#{age},#{sex},#{phone},#{email})
+    </insert>
+
+    <select id="findByid" parameterType="java.lang.Integer" resultType="com.jz.table.entity.UserInfo">
+      SELECT  * FROM userinfo where userid = #{id}
+    </select>
+
+    <update id="updateUser" parameterType="com.jz.table.entity.UserInfo">
+      update  userinfo SET account=#{account},user_pwd=#{user_pwd},age =#{age},sex=#{sex},phone=#{phone},email=#{email} WHERE userid = #{userid}
+    </update>
+
+    <delete id="delUser" parameterType="java.lang.Integer">
+     DELETE from userinfo WHERE userid = #{id}
+    </delete>
+</mapper>

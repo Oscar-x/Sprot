@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加教练</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div class="wrap" style="height: 700px"><!--登录框的最外部的框框-->
+    <div class="title">
+        添加教练信息
+    </div>
+    <div class="main">
+
+        <input class="input" placeholder="请输入用户名" id="name" type="text"/><br><br>
+        <input class="input"  placeholder="请输入密码"id="pwd" type="password"/><br><br>
+        <select class="input" id="sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select><br><br>
+        <input class="input" placeholder="请输入项目" id="project" type="text"/><br><br>
+        <input class="input" placeholder="请输入电话号码" id="phone" type="text"/><br><br>
+        <input class="input" placeholder="请输入邮箱地址" id="email" type="text"/><br><br>
+        <button  onclick="goAddCoach()" name="sub" id="btn1">添加</button><br><br>
+        <input  id="btn2"  type="reset" value="重置"></input>
+
+    </div>
+    <br><br>
+</div>
+
+</body>
+<script>
+    function goAddCoach() {
+        var coach_name = $("#name").val();
+        var coach_pwd = $("#pwd").val();
+        var coach_sex = $("#sex").val();
+        var touch_project = $("#project").val();
+        var phone = $("#phone").val()
+        var email = $("#email").val();
+        $.post("/addCoach",{coach_name:coach_name,coach_pwd:coach_pwd,coach_sex:coach_sex,touch_project:touch_project,phone:phone,email:email},function (res){
+            if (res===true){
+                alert("添加成功")
+            }else {
+                alert("添加失败，请检查数据重试！");
+            }
+        })
+    }
+    function refresh() {
+        window.location.href = "/coachList"
+    }
+</script>
+</html>

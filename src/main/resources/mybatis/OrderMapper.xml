@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jz.table.dao.OrderDao">
+    <select id="FindAll" resultType="com.jz.table.entity.Order">
+        select * from orders;
+    </select>
+
+    <insert id="addOrder"  parameterType="com.jz.table.entity.Order">
+           INSERT INTO orders(project,price) VALUES (#{project},#{price})
+        </insert>
+
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.jz.table.entity.Order">
+          SELECT  * FROM orders where order_id = #{id}
+        </select>
+
+    <update id="updateOrder" parameterType="com.jz.table.entity.Order">
+          update  orders SET project=#{project},price=#{price} WHERE order_id = #{order_id}
+        </update>
+
+    <delete id="delOrder" parameterType="java.lang.Integer">
+         DELETE from orders WHERE order_id = #{id}
+        </delete>
+</mapper>

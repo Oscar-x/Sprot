@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jz.table.dao.FieldDao">
+    <select id="FindAll" resultType="com.jz.table.entity.Field">
+        select * from field
+    </select>
+
+    <insert id="addField"  parameterType="com.jz.table.entity.Field">
+           INSERT INTO field(project,address,price) VALUES (#{project},#{address},#{price})
+        </insert>
+
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.jz.table.entity.Field">
+          SELECT  * FROM field where fieldid = #{id}
+        </select>
+
+    <update id="updateField" parameterType="com.jz.table.entity.Field">
+          update  field SET project=#{project},address=#{address},price=#{price} WHERE fieldid = #{fieldid}
+        </update>
+
+    <delete id="delField" parameterType="java.lang.Integer">
+         DELETE from field WHERE fieldid = #{id}
+        </delete>
+</mapper>

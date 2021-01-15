@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+
+<body style="background-color: #f3f3f3">
+<div style="width: auto;height: 30px"></div>
+<div class="kj">
+    <form onsubmit="return search()">
+        <input type=text class="ssk" autocomplete="off" autofocus id="search_input">
+        <button class="anniu" onclick="return search()">搜索</button>
+    </form>
+</div>
+<br><br><br><br>
+<div style="width: auto;height: 30px;background-color:#9F9F9F"></div>
+<h1>用户基本信息维护</h1><button  onclick="goadd()" class="refresh" >刷新数据</button>
+<table width="100%" border="1" cellspacing="0">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>电话</th>
+        <th>邮箱</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="user:${alist}">
+        <td  align="center" th:text="${user.userid}"></td>
+        <td  align="center" th:text="${user.account}"></td>
+        <td  align="center" th:text="${user.user_pwd}"></td>
+        <td  align="center" th:text="${user.age}"></td>
+        <td  align="center" th:text="${user.sex}"></td>
+        <td  align="center" th:text="${user.phone}"></td>
+        <td  align="center" th:text="${user.email}"></td>
+        <td  align="center"><a class="button" th:href="@{'/goupdate/'+${user.userid}}">修改</a>
+            &nbsp;
+            <a class="button" th:href="@{'/godel/'+${user.userid}}">删除</a>
+        </td>
+    </tr>
+    </thead>
+</table>
+<ul class="pagination">
+    <li><a href="#">«</a></li>
+    <li><a class="active" href="#">1</a></li>
+    <li><a  href="#">2</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">»</a></li>
+</ul>
+</body>
+<script>
+
+    function goadd() {
+        window.location.href = "/userlist"
+    }
+
+</script>
+</html>

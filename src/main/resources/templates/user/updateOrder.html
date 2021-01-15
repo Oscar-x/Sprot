@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改订单信息</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div class="wrap" style="height: 700px"><!--登录框的最外部的框框-->
+    <div class="title">
+        订单信息修改页面
+    </div>
+    <div class="main">
+        <input  type="hidden" id="id" th:value="${order.order_id}"><br><br>
+        <input class="input" placeholder="请输入项 目" id="project" th:value="${order.project}"/><br><br>
+        <input class="input"  placeholder="请输入价 格" id="price"  th:value="${order.price}"/><br><br>
+        <button  onclick="goupdate()" name="sub" id="btn1">修改</button><br><br>
+        <button id="btn2" name="button"  onclick="javascript:history.back(-1);">返回</button>
+
+    </div>
+    <br><br>
+</div>
+</body>
+<script>
+    function goupdate() {
+        var order_id=$("#id").val();
+        var project = $("#project").val();
+        var price = $("#price").val();
+        $.post("/updateOrder",{order_id:order_id,project:project,price:price},function (res) {
+            if (res===true) {
+                alert("修改成功");
+                window.location.href="/orderList";
+            }else {
+                alert("修改失败，请检查数据重试！");
+            }
+        })
+    }
+</script>
+</html>

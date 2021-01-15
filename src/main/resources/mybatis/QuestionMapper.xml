@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jz.table.dao.QuertionbankDao">
+    <select id="FindAll" resultType="com.jz.table.entity.Questionbank">
+        select * from questionbank;
+    </select>
+
+    <insert id="addQuestion"  parameterType="com.jz.table.entity.Order">
+           INSERT INTO questionbank(content,correct,OptionA,OptionB,OptionC,OptionD) VALUES (#{content},#{correct},#{OptionA},#{OptionB},#{OptionC},#{OptionD})
+        </insert>
+
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.jz.table.entity.Questionbank">
+          SELECT  * FROM questionbank where num_id = #{id}
+        </select>
+
+    <update id="updateQuestion" parameterType="com.jz.table.entity.Questionbank">
+          update  questionbank SET content=#{content},correct=#{correct},OptionA=#{OptionA},OptionB=#{OptionB},OptionC=#{OptionC},OptionD=#{OptionD} WHERE num_id = #{num_id}
+        </update>
+
+    <delete id="delQuestion" parameterType="java.lang.Integer">
+         DELETE from questionbank WHERE num_id = #{id}
+        </delete>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jz.table.dao.CoachDao">
+    <select id="FindAll" resultType="com.jz.table.entity.Coach">
+        select * from coach
+    </select>
+
+        <insert id="addCoach"  parameterType="com.jz.table.entity.Coach">
+           INSERT INTO coach(coach_name,coach_pwd,coach_sex,touch_project,phone,email) VALUES (#{coach_name},#{coach_pwd},#{coach_sex},#{touch_project},#{phone},#{email})
+        </insert>
+
+        <select id="findById" parameterType="java.lang.Integer" resultType="com.jz.table.entity.Coach">
+          SELECT  * FROM coach where coachid = #{id}
+        </select>
+
+        <update id="updateCoach" parameterType="com.jz.table.entity.Coach">
+          update  coach SET coach_name=#{coach_name},coach_pwd=#{coach_pwd},coach_sex=#{coach_sex},touch_project=#{touch_project},phone=#{phone},email=#{email} WHERE coachid = #{coachid}
+        </update>
+
+        <delete id="delCoach" parameterType="java.lang.Integer">
+         DELETE from coach WHERE coachid = #{id}
+        </delete>
+</mapper>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改用户</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body class="body">
+<div class="wrap" style="height: 700px"><!--登录框的最外部的框框-->
+    <div class="title">
+        修改用户信息
+    </div>
+    <div class="main">
+        <input  type="hidden" id="id" th:value="${user.userid}"><br><br>
+        <input class="input" placeholder="请输入用户名" id="name" th:value="${user.account}"/><br><br>
+        <input class="input"  placeholder="请输入密码"id="pwd" th:value="${user.user_pwd}"/><br><br>
+        <input class="input" placeholder="请输入年龄" id="age" th:value="${user.age}"/><br><br>
+        <select class="input" id="sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select><br><br>
+        <input class="input" placeholder="请输入电话号码" id="phone" th:value="${user.phone}"/><br><br>
+        <input class="input" placeholder="请输入邮箱地址" id="email" th:value="${user.email}"/><br><br>
+        <button id="btn1" onclick="goupdate()">修改</button><br><br>
+        <button id="btn2" onclick="back()">返回</button>
+    </div>
+<br><br>
+</div>
+</body>
+<script>
+    function goupdate() {
+        var userid=$("#id").val();
+        var account = $("#name").val();
+        var user_pwd = $("#pwd").val();
+        var age = $("#age").val();
+        var sex = $("#sex").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        $.post("/update",{userid:userid,account:account,user_pwd:user_pwd,age:age,sex:sex,phone:phone,email,email},function (res) {
+            if (res==true) {
+                alert("修改成功");
+                window.location.href="/userlist";
+            }else {
+                alert("修改失败，请检查数据重试！");
+            }
+        })
+    }
+    function back() {
+        window.location.href="/userlist";
+    }
+</script>
+</html>

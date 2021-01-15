@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jz.table.dao.ClassDao">
+    <select id="FindAll" resultType="com.jz.table.entity.ClassInfo">
+        select * from class;
+    </select>
+
+    <insert id="addClass"  parameterType="com.jz.table.entity.ClassInfo">
+           INSERT INTO class(project,class_name,class_num) VALUES (#{project},#{class_name},#{class_num})
+        </insert>
+
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.jz.table.entity.ClassInfo">
+          SELECT  * FROM class where classid = #{id}
+        </select>
+
+    <update id="updateClass" parameterType="com.jz.table.entity.ClassInfo">
+          update  class SET project=#{project},class_name=#{class_name},class_num=#{class_num} WHERE classid = #{classid}
+        </update>
+
+    <delete id="delClass" parameterType="java.lang.Integer">
+         DELETE from class WHERE classid = #{id}
+        </delete>
+</mapper>

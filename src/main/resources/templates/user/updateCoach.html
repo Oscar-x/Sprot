@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改教练信息</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div class="wrap" style="height: 700px"><!--登录框的最外部的框框-->
+    <div class="title">
+        修改教练信息
+    </div>
+    <div class="main">
+        <input  type="hidden" id="id" th:value="${coach.coachid}"><br><br>
+        <input class="input" placeholder="请输入用户名" id="name" th:value="${coach.coach_name}"/><br><br>
+        <input class="input"  placeholder="请输入密码"id="pwd" th:value="${coach.coach_pwd}"/><br><br>
+        <select class="input" id="sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select><br><br>
+        <input class="input" placeholder="请输入项目" id="project" th:value="${coach.touch_project}"/><br><br>
+        <input class="input" placeholder="请输入电话号码" id="phone" th:value="${coach.phone}"/><br><br>
+        <input class="input" placeholder="请输入邮箱地址" id="email" th:value="${coach.email}"/><br><br>
+        <button  onclick="goupdate()" name="sub" id="btn1">修改</button><br><br>
+        <button  id="btn2" name="button"  onclick="javascript:history.back(-1);">返回</button>
+
+    </div>
+    <br><br>
+</div>
+</body>
+<script>
+    function goupdate() {
+        var coachid=$("#id").val();
+        var coach_name = $("#name").val();
+        var coach_pwd = $("#pwd").val();
+        var coach_sex = $("#sex").val();
+        var touch_project = $("#project").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        $.post("/updateCoach",{coachid:coachid,coach_name:coach_name,coach_pwd:coach_pwd,coach_sex:coach_sex,touch_project:touch_project,phone:phone,email,email},function (res) {
+            if (res==true) {
+                alert("修改成功");
+                window.location.href="/coachList";
+            }else {
+                alert("修改失败，请检查数据重试！");
+            }
+        })
+    }
+</script>
+</html>

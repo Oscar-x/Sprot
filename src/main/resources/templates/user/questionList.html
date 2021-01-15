@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+
+<body style="background-color: #f3f3f3">
+<div style="width: auto;height: 30px"></div>
+<div class="kj">
+    <form onsubmit="return search()">
+        <input type=text class="ssk" autocomplete="off" autofocus id="search_input">
+        <button class="anniu" onclick="return search()">搜索</button>
+    </form>
+</div>
+<br><br><br><br>
+<div style="width: auto;height: 30px;background-color:#35ad4f"></div>
+<h1>题库基本信息维护</h1><button  onclick="goadd()" class="refresh" >刷新数据</button>
+<table width="100%" border="1" cellspacing="0">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>题目内容</th>
+        <th>正确答案</th>
+        <th>选项A</th>
+        <th>选项B</th>
+        <th>选项C</th>
+        <th>选项D</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="questionbank:${list}">
+        <td  align="center" th:text="${questionbank.num_id}"></td>
+        <td  align="center" th:text="${questionbank.content}"></td>
+        <td  align="center" th:text="${questionbank.correct}"></td>
+        <td  align="center" th:text="${questionbank.optionA}"></td>
+        <td  align="center" th:text="${questionbank.optionB}"></td>
+        <td  align="center" th:text="${questionbank.optionC}"></td>
+        <td  align="center" th:text="${questionbank.optionD}"></td>
+        <td  align="center"><a class="button" th:href="@{'/goupQuestion/'+${questionbank.num_id}}">修改</a>
+            &nbsp;
+            <a class="button" th:href="@{'/godelQuestion/'+${questionbank.num_id}}">删除</a>
+        </td>
+    </tr>
+    </thead>
+</table>
+
+<ul class="pagination">
+    <li><a href="#">«</a></li>
+    <li><a href="#">1</a></li>
+    <li><a class="active" href="#">2</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">»</a></li>
+</ul>
+</body>
+<script>
+
+    function goadd() {
+        window.location.href = "/questionList"
+    }
+
+</script>
+</html>

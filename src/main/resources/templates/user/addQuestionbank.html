@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加题库信息</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div class="wrap" style="height: 700px"><!--登录框的最外部的框框-->
+    <div class="title">
+        添加题库信息
+    </div>
+    <div class="main">
+
+        <input class="input" placeholder="请输入题目" id="title" type="text"/><br><br>
+        <input class="input"  placeholder="请输入答案选项" id="answer" type="text"/><br><br>
+        <input class="input" placeholder="请输入选项A" id="a" type="text"/><br><br>
+        <input class="input" placeholder="请输入选项B" id="b" type="text"/><br><br>
+        <input class="input" placeholder="请输入选项C" id="c" type="text"/><br><br>
+        <input class="input" placeholder="请输入选项D" id="d" type="text"/><br><br>
+        <button  onclick="addQuestion()" name="sub" id="btn1">添加</button><br><br>
+        <input  id="btn2"  type="reset" value="重置"></input>
+
+    </div>
+    <br><br>
+</div>
+
+</body>
+<script>
+    function addQuestion() {
+        var title = $("#title").val();
+        var answer = $("#answer").val();
+        var a = $("#a").val();
+        var b = $("#b").val();
+        var c = $("#c").val();
+        var d = $("#d").val();
+        $.post("/addQuestion",{content:title,correct:answer,optionA:a,optionB:b,optionC:c,optionD:d,},function (res) {
+            if (res==true) {
+                alert("添加成功");
+                window.location.href="/questionList";
+            }else {
+                alert("添加失败，请检查数据重试！");
+            }
+        })
+    }
+</script>
+</html>
