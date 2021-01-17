@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 
+
 @Controller
 public class UserController {
     @Resource
     private UserDao ud;
-
 
     @RequestMapping("/goadd")//去添加页面
     public String goadd(){

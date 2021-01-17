@@ -1,0 +1,74 @@
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 9999;
+}
+
+.loader {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-image: url("../../assets/images/pl.GIF");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-position: center;
+    background-size: cover;
+    margin: -20px 0 0 -20px;
+}
+.header {
+    clear:both;
+    margin:0 20px;
+    padding:5px 0 0 0;
+}
+.header .bg-header-top{
+    background: #1E4592;
+}
+.header-top{
+    height: 40px;
+    text-align: center;
+}
+.header-contact{
+    float: left;
+}
+.fa {
+    font-size: 80%;
+    color: #ffffff;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.log-reg{
+    float: right;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.header .bg-main-menu{
+    background: #ffffff;
+}
+.header .main-menu {
+    text-align: center;
+}
+.show-res-logo{
+    display: none;
+}
+.header .main-menu .navbar{
+    margin-bottom: 0;
+    border: 0;
+}
+.navbar-brand{
+    padding-left: 0;
+}
+.header .navbar-collapse{
+    padding-left: 0;
+    padding-right: 0;
+}

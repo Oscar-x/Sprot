@@ -22,6 +22,16 @@ public class MainController {
     @Resource
     private UserDao ud;
 
+    @RequestMapping("/qtindex")
+    public String qtindex(){
+        return "qtuser/qtindex";
+    }
+
+    @RequestMapping("/home")
+    public  String home(){
+        return "qtuser/home";
+    }
+
     @RequestMapping("login")//主页
     public String index(){
         return "admin/login";//login
