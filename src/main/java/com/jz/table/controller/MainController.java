@@ -27,10 +27,36 @@ public class MainController {
         return "qtuser/qtindex";
     }
 
-    @RequestMapping("/home")
-    public  String home(){
-        return "qtuser/home";
+    @RequestMapping("/userlogin")
+    public String gouserlogin(){
+        return "qtuser/userlogin";
     }
+    @RequestMapping("/classs")
+    public String classs(){
+        return "qtuser/classs";
+    }
+
+    @RequestMapping("/fooler")
+    public String fooler(){
+        return "qtuser/fooler";
+    }
+
+    @RequestMapping("/tips")
+    public  String tips(){
+        return "qtuser/tips";
+    }
+
+    @RequestMapping("/theory")
+    public  String theory(){
+        return "qtuser/theorytest";
+    }
+
+    @RequestMapping("/about")
+    public  String about(){
+        return "qtuser/about";
+    }
+
+
 
     @RequestMapping("login")//主页
     public String index(){
@@ -41,6 +67,8 @@ public class MainController {
     public String goregister(){
         return  "register";
     }
+
+
     @RequestMapping("/register")//注册
     @ResponseBody
     public boolean register(Admin admin){

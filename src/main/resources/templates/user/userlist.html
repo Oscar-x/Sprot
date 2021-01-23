@@ -2,9 +2,13 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>首页</title>
+    <title>用户列表</title>
     <link rel="stylesheet" type="text/css" href="../css/common.css" />
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 </head>
 
 <body style="background-color: #f3f3f3">
@@ -46,12 +50,41 @@
     </thead>
 </table>
 <ul class="pagination">
-    <li><a href="#">«</a></li>
-    <li><a class="active" href="#">1</a></li>
-    <li><a  href="#">2</a></li>
-    <li><a href="#">...</a></li>
-    <li><a href="#">»</a></li>
+    <li><a href="#">&laquo;</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
 </ul>
+
+<!--<nav>-->
+<!--    <ul class="pagination">-->
+<!--        <li>-->
+<!--            <a  href="?page.start=0">-->
+<!--                <span>首页</span>-->
+<!--            </a>-->
+<!--        </li>-->
+
+<!--        <li >-->
+<!--            <a  href="?page.start=${page.start-page.count}">-->
+<!--                <span>上一页</span>-->
+<!--            </a>-->
+<!--        </li>-->
+
+<!--        <li >-->
+<!--            <a href="?page.start=${page.start+page.count}">-->
+<!--                <span>下一页</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li >-->
+<!--            <a href="?page.start=${page.last}">-->
+<!--                <span>尾页</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</nav>-->
 </body>
 <script>
 

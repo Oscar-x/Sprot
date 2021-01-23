@@ -8,6 +8,7 @@
     <insert id="addAdmin" parameterType="com.jz.table.entity.Admin">
         INSERT INTO admin (name,password) VALUES (#{name},#{password});
     </insert>
+
     <select id="FindAll" resultType="com.jz.table.entity.Admin">
         select * from admin;
     </select>
