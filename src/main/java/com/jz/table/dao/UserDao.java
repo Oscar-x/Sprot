@@ -10,7 +10,7 @@ public interface UserDao {
     //登录判断
     UserInfo userlogin(UserInfo userInfo);
     //查
-    List<UserInfo>FindAll();
+    List<UserInfo> FindAll();
     //增
     int adduser(UserInfo user);
     //根据Id查，用于修改时页面回显数据
@@ -21,6 +21,8 @@ public interface UserDao {
     int delUser(Integer id);
     //注册
     int addusers(UserInfo user);
+
+    int joinclass(Integer classid,Integer userid);
 
 //    //分页查询
 //    List<UserInfo> selectPage(Integer start,Integer size);

@@ -1,30 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!-- 引入样式 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <!-- 引入组件库 -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
-
 <body>
+<li class="sort">
+    <select id="project" class="a1">
+        <option value="1">长跑</option>
+        <option value="2">游泳</option>
+        <option value="3">篮球</option>
+        <option value="4">立定跳远</option>
+        <option value="5">引体向上</option>
+        <option value="6">实心球</option>
+    </select></li>
+<li>
+    <button onclick="goSelect()">确认</button>
+</li>
 
-<div class="source">
-    <section class="el-container" style="height: 500px; border: 1px solid rgb(238, 238, 238);">
-        <aside class="el-aside" style="width: 200px; background-color: rgb(238, 241, 246);">
-            <ul role="menubar" class="el-menu"><li role="menuitem" aria-haspopup="true" class="el-submenu is-active">
-                <div class="el-submenu__title" style="padding-left: 20px;">
-                    <i class="el-icon-message"></i>导航一<i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
-                </div><ul role="menu" class="el-menu" data-old-padding-top="" data-old-padding-bottom="" data-old-overflow="" style="display: none;">
-                <li class="el-menu-item-group"><div class="el-menu-item-group__title" style="padding-left: 40px;">分组一</div><ul><li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="padding-left: 40px;">选项1</li>
-                    <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">选项2</li></ul></li><li class="el-menu-item-group"><div class="el-menu-item-group__title" style="padding-left: 40px;">分组2</div><ul>
-                <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">选项3</li>
-            </ul>
-            </li>
-                <li role="menuitem" aria-haspopup="true" class="el-submenu"><div class="el-submenu__title" style="padding-left: 40px;">选项4<i class="el-submenu__icon-arrow el-icon-arrow-down"></i></div><ul role="menu" class="el-menu" style="display: none;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 60px;">选项4-1</li></ul></li></ul></li><li role="menuitem" aria-haspopup="true" class="el-submenu"><div class="el-submenu__title" style="padding-left: 20px;"><i class="el-icon-menu"></i>导航二<i class="el-submenu__icon-arrow el-icon-arrow-down"></i></div><ul role="menu" class="el-menu" style="display: none;" data-old-padding-top="" data-old-padding-bottom="" data-old-overflow=""><li class="el-menu-item-group"><div class="el-menu-item-group__title" style="padding-left: 40px;">分组一</div><ul><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">选项1</li><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">选项2</li></ul></li><li class="el-menu-item-group"><div class="el-menu-item-group__title" style="padding-left: 40px;">分组2</div><ul><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">选项3</li></ul></li><li role="menuitem" aria-haspopup="true" class="el-submenu"><div class="el-submenu__title" style="padding-left: 40px;">选项4<i class="el-submenu__icon-arrow el-icon-arrow-down"></i></div><ul role="menu" class="el-menu" style="display: none;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 60px;">选项4-1</li></ul></li></ul></li><li role="menuitem" aria-haspopup="true" class="el-submenu"><div class="el-submenu__title" style="padding-left: 20px;"><i class="el-icon-setting"></i>导航三<i class="el-submenu__icon-arrow el-icon-arrow-down"></i></div><ul role="menu" class="el-menu" data-old-padding-top="" data-old-padding-bottom="" data-old-overflow="" style="display: none;"><li class="el-menu-item-group"><div class="el-menu-item-group__title" style="padding-left: 40px;">分组一</div><ul><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">选项1</li><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">选项2</li></ul></li><li class="el-menu-item-group"><div class="el-menu-item-group__title" style="padding-left: 40px;">分组2</div><ul><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">选项3</li></ul></li><li role="menuitem" aria-haspopup="true" class="el-submenu"><div class="el-submenu__title" style="padding-left: 40px;">选项4<i class="el-submenu__icon-arrow el-icon-arrow-down"></i></div><ul role="menu" class="el-menu" style="display: none;"><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 60px;">选项4-1</li></ul></li></ul></li></ul></aside><section class="el-container is-vertical"><header class="el-header" style="height: 60px; text-align: right; font-size: 12px;"><div class="el-dropdown"><i class="el-icon-setting el-dropdown-selfdefine" aria-haspopup="list" aria-controls="dropdown-menu-8287" role="button" tabindex="0" style="margin-right: 15px;"></i><ul class="el-dropdown-menu el-popper" id="dropdown-menu-8287" style="display: none;"><li tabindex="-1" class="el-dropdown-menu__item">查看</li><li tabindex="-1" class="el-dropdown-menu__item">新增</li><li tabindex="-1" class="el-dropdown-menu__item">删除</li></ul></div><span>王小虎</span></header><main class="el-main"><div class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition"><div class="hidden-columns"><div></div><div></div><div></div></div><div class="el-table__header-wrapper"><table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width: 561px;"><colgroup><col name="el-table_1_column_1" width="140"><col name="el-table_1_column_2" width="120"><col name="el-table_1_column_3" width="301"><col name="gutter" width=""></colgroup><thead class="has-gutter"><tr class=""><th colspan="1" rowspan="1" class="el-table_1_column_1     is-leaf"><div class="cell">日期</div></th><th colspan="1" rowspan="1" class="el-table_1_column_2     is-leaf"><div class="cell">姓名</div></th><th colspan="1" rowspan="1" class="el-table_1_column_3     is-leaf"><div class="cell">地址</div></th><th class="gutter" style="width: 0px;"></th></tr></thead></table></div><div class="el-table__body-wrapper is-scroll-left"><table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 561px;"><colgroup><col name="el-table_1_column_1" width="140"><col name="el-table_1_column_2" width="120"><col name="el-table_1_column_3" width="301"></colgroup><tbody><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><tr class="el-table__row"><td class="el-table_1_column_1  "><div class="cell">2016-05-02</div></td><td class="el-table_1_column_2  "><div class="cell">王小虎</div></td><td class="el-table_1_column_3  "><div class="cell">上海市普陀区金沙江路 1518 弄</div></td></tr><!----></tbody></table><!----><!----></div><!----><!----><!----><!----><div class="el-table__column-resize-proxy" style="display: none;"></div><div class="resize-triggers"><div class="expand-trigger"><div style="width: 562px; height: 1009px;"></div></div><div class="contract-trigger"></div></div></div></main></section></section></div>
+<input type=text autofocus id="search_input">
+<button class="anniu" onclick="searchuser()">搜索</button>
+<table width="100%" border="1" cellspacing="0">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>电话</th>
+        <th>邮箱</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="user:${alist}">
+        <td align="center" th:text="${user.userid}"></td>
+        <td align="center" th:text="${user.account}"></td>
+        <td align="center" th:text="${user.user_pwd}"></td>
+        <td align="center" th:text="${user.age}"></td>
+        <td align="center" th:text="${user.sex}"></td>
+        <td align="center" th:text="${user.phone}"></td>
+        <td align="center" th:text="${user.email}"></td>
+        <td align="center"><a class="button" th:href="@{'/goupdate/'+${user.userid}}">修改</a>
+            &nbsp;
+            <a class="button" th:href="@{'/godel/'+${user.userid}}">删除</a>
+        </td>
+    </tr>
+    </thead>
+</table>
+<script>
+    function goSelect() {
+        var project1 = $("#project").val();
+        alert(project1);
+    }
 
+    function searchuser() {
+        var project = $("#search_input").val();
+        alert(project);
+    }
+
+</script>
 </body>
-
 </html>

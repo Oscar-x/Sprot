@@ -63,4 +63,11 @@ public class CoachController {
         coachDao.delCoach(id);
         return "public/Coachsc";
     }
+
+    @RequestMapping("/selectCoach")
+    public String selectCoach(Integer id, Model model){
+        Coach coach = coachDao.findById(id);
+        model.addAttribute("alist",coach);
+        return "qtuser/classs";
+    }
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改班级信息</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div class="wrap" ><!--登录框的最外部的框框-->
+    <div class="title">
+        班级详细信息
+    </div>
+    <div>
+        <table width="100%" border="1" cellspacing="0">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>班级名</th>
+                <th>班级人数</th>
+                <th>项目</th>
+                <th>状态</th>
+                <th>添加时间</th>
+                <th>开始训练时间</th>
+                <th>训练结束时间</th>
+                <th>班级目标</th>
+                <th>每周训练次数</th>
+                <th>班级价格</th>
+            </tr>
+            <tr th:each="class:${alist}">
+                <td  align="center" th:text="${class.classid}"></td>
+                <td  align="center" th:text="${class.class_name}"></td>
+                <td  align="center" th:text="${class.class_num}"></td>
+                <td  align="center" th:text="${class.project}"></td>
+                <td  align="center" th:text="${class.statu}" style="color: #ac2925"></td>
+                <td  align="center" th:text="${class.addtime}"></td>
+                <td  align="center" th:text="${class.dataline}"></td>
+                <td  align="center" th:text="${class.traintime}"></td>
+                <td  align="center" th:text="${class.classgoal}"></td>
+                <td  align="center" th:text="${class.trainnum}"></td>
+                <td  align="center" th:text="${class.amount}"></td>
+                <td><button><a th:href="@{'/joinclass/'+${class.classid}}">加入班级</a></button><td>&nbsp;
+            </tr>
+            </thead>
+        </table>
+        <button id="btn2" name="button"  onclick="javascript:history.back(-1);">返回</button>
+
+    </div>
+</div>
+
+</body>
+<script>
+    function goupdate() {
+        window.location.href="/classs";
+    }
+</script>
+</html>

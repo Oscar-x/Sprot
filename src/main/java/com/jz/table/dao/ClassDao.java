@@ -18,5 +18,14 @@ public interface ClassDao {
         //删除
         int delClass(Integer id);
 
+        //条件查询
+        List<ClassInfo> selectCoach(Integer id);
 
+        List<ClassInfo> openClass();
+
+        List<ClassInfo> getClassByCoachId(Integer id);
+
+        ClassInfo getClassId(Integer id);
+
+        int closeclass(Integer id);
 }

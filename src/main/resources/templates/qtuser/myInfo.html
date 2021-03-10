@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="x-dns-prefetch-control" content="on"/>
+    <link rel="dns-prefetch" href="http://cdn01.weipaitang.com/"/>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+    <title>我的信息</title>
+</head>
+<body>
+<!-- Start Header Section -->
+<header class="header">
+    <!-- Start Header Top -->
+    <div class="bg-header-top">
+        <div class="container">
+            <div class="row">
+                <div class="header-top">
+                    <ul class="header-contact">
+                        <!--							<li style="color: #effcff">Phone : +88017 923 970 659</li>-->
+                        <!--							<li style="color: #effcff">Time :  Monday-Friday : 9:00am-6:00pm</li>-->
+                    </ul>
+                    <div class="log-reg">
+                        <a href="/userlogin" style="color: #f3f3f3">Login</a> | <a href="/gouserregister"style="color: #f3f3f3">Register</a>
+                    </div>
+                    <
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Header Top -->
+
+    <!-- Start Menu -->
+    <div class="bg-main-menu menu-scroll">
+        <div class="container">
+            <div class="row">
+                <div class="main-menu">
+                    <a class="show-res-logo" href="index.html"><img src="#" alt="logo" class="img-responsive"/></a>
+                    <nav class="navbar">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#"><img src="../images/images.png" alt="logo"
+                                                                  class="img-responsive"
+                                                                  style="width: 30px;height: 28px;float: left"/><h4
+                                    style="float: right">启明中学生训练管理平台</h4></a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="/qtindex">主页</a></li>
+                                <li><a href="/tips">提分技巧</a></li>
+                                <li><a href="/classs">加入班级</a></li>
+                                <li><a href="/theory">理论测试</a></li>
+                                <li><a href="/about">关于我们</a></li>
+                                <li><a href="/myInfo">我的信息</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div><!-- .main-menu -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div>
+    <!-- End Menu -->
+    <div style="width: auto;height: 20px;background-color: #1E9FFF"></div>
+</header>
+
+<div style="padding-top: 1px">
+    <div style="background-color: #2D93CA;width: 80%;height: 420px;margin: 10% 10%;">
+        <div th:each="user:${userlogon}">
+            <br>
+            <span>用户名:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${user.account}"></td></span><br><br><br>
+            <span>密码:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${user.user_pwd}"></td></span><br><br><br>
+            <span>性别:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${user.sex}"></td></span><br><br><br>
+            <span>我的电话:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${user.phone}"></td></span><br><br><br>
+            <span>我的邮箱:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${user.email}"></td></span><br><br>
+            <span><a th:href="@{'/goupdate/'+${user.userid}}">修改个人信息</a></span>
+        </div>
+    </div>
+</div>
+<div>
+    <h1>我的班级</h1>
+    <div>
+        <table width="100%" border="1" cellspacing="0" th:each="class:${list}">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>班级名</th>
+                <th>班级人数</th>
+                <th>项目</th>
+                <th>状态</th>
+                <th>添加时间</th>
+                <th>开始训练时间</th>
+                <th>训练结束时间</th>
+            <tr>
+                <td  align="center" th:text="${class.classid}"></td>
+                <td  align="center" th:text="${class.class_name}"></td>
+                <td  align="center" th:text="${class.class_num}"></td>
+                <td  align="center" th:text="${class.project}"></td>
+                <td  align="center" th:text="${class.statu}" style="color: #ac2925"></td>
+                <td  align="center" th:text="${class.addtime}"></td>
+                <td  align="center" th:text="${class.dataline}"></td>
+                <td  align="center" th:text="${class.traintime}"></td>
+            </tr>
+            </tr>
+            <tr >
+                <th>班级目标</th>
+                <th>每周训练次数</th>
+                <th>班级价格</th>
+                <th>教练</th>
+            <tr>
+                <td  align="center" th:text="${class.classgoal}"></td>
+                <td  align="center" th:text="${class.trainnum}"></td>
+                <td  align="center" th:text="${class.amount}"></td>
+                <td  align="center" th:text="${class.coachs.coach_name}"></td>
+                <td><a href="/evaluationCoach">查看教练详情</a></td>
+            </tr>
+
+
+            </tr>
+            </thead>
+        </table>
+<!--        <table width="100%" border="1" cellspacing="0">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>id</th>-->
+<!--                <th>班级名</th>-->
+<!--                <th>班级人数</th>-->
+<!--                <th>项目</th>-->
+<!--                <th>状态</th>-->
+<!--                <th>添加时间</th>-->
+<!--                <th>开始训练时间</th>-->
+<!--                <th>训练结束时间</th>-->
+<!--                <th>班级目标</th>-->
+<!--                <th>每周训练次数</th>-->
+<!--                <th>班级价格</th>-->
+<!--            </tr>-->
+<!--            <tr th:each="content:${conlist}">-->
+<!--                <td  align="center" th:text="${content.id}"></td>-->
+<!--                <td  align="center" th:text="${class.class_name}"></td>-->
+<!--                <td  align="center" th:text="${class.class_num}"></td>-->
+<!--                <td  align="center" th:text="${class.project}"></td>-->
+<!--                <td  align="center" th:text="${class.statu}" style="color: #ac2925"></td>-->
+<!--                <td  align="center" th:text="${class.addtime}"></td>-->
+<!--                <td  align="center" th:text="${class.dataline}"></td>-->
+<!--                <td  align="center" th:text="${class.traintime}"></td>-->
+<!--                <td  align="center" th:text="${class.classgoal}"></td>-->
+<!--                <td  align="center" th:text="${class.trainnum}"></td>-->
+<!--                <td  align="center" th:text="${class.amount}"></td>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--        </table>-->
+
+    </div>
+</div>
+<div class="footer">
+    <iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="/fooler" width="100%"
+            height="auto"></iframe>
+</div>
+</body>
+</html>

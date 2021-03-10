@@ -39,7 +39,7 @@
         <input class="input" placeholder="请输入截止开班天数" id="dataline" type="text"/><br><br>
         <input class="input" placeholder="请输入加入班级总价格" id="amount" type="text"/><br><br>
         <button  onclick="goAddField()" name="sub" id="btn1">添加</button><br><br>
-        <input  id="btn2"  type="reset" value="重置"></input>
+        <button  id="btn2"  onclick="javascript:history.back(-1);">返回</button>
 
     </div>
     <br><br>
@@ -87,9 +87,6 @@
                 alert("添加失败，请检查数据重试！");
             }
         })
-    }
-    function refresh() {
-        window.location.href = "/classList"
     }
 </script>
 </html>

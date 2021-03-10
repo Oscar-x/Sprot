@@ -2,12 +2,16 @@ package com.jz.table.controller;
 
 
 import com.jz.table.dao.AdminDao;
+import com.jz.table.dao.ClassDao;
+
 import com.jz.table.dao.UserDao;
 import com.jz.table.entity.Admin;
+import com.jz.table.entity.ClassInfo;
+
 import com.jz.table.entity.UserInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
@@ -21,10 +25,19 @@ public class MainController {
     private AdminDao ad;
     @Resource
     private UserDao ud;
+    @Resource
+    private ClassDao classDao;
 
     @RequestMapping("/qtindex")
     public String qtindex(){
         return "qtuser/qtindex";
+    }
+
+    @RequestMapping("/test")
+    public String test(Model model){
+        List<UserInfo> userlist = ud.FindAll();
+        model.addAttribute("alist",userlist);
+        return "test";
     }
 
     @RequestMapping("/userlogin")
@@ -32,7 +45,9 @@ public class MainController {
         return "qtuser/userlogin";
     }
     @RequestMapping("/classs")
-    public String classs(){
+    public String classs(Model model){
+        List<ClassInfo> classList = classDao.openClass();
+        model.addAttribute("list",classList);
         return "qtuser/classs";
     }
 
@@ -94,7 +109,6 @@ public class MainController {
         List<UserInfo> userlist = ud.FindAll();
         model.addAttribute("admin",aa);
         model.addAttribute("alist",userlist);
-
         return "admin/index";//user/index
     }
 
@@ -109,7 +123,6 @@ public class MainController {
         model.addAttribute("alist",userlist);
         return "user/userlist";//
     }
-
 
 
 }

@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jz.table.dao.CoachDao">
+
+    <select id="coachLogin" parameterType="com.jz.table.entity.Coach" resultType="com.jz.table.entity.Coach">
+        select * FROM coach WHERE coach_name = #{coach_name} AND coach_pwd = #{coach_pwd};
+    </select>
+
     <select id="FindAll" resultType="com.jz.table.entity.Coach">
         select * from coach
+    </select>
+
+    <select id="selectCoach" resultType="com.jz.table.entity.Coach">
+        select * from coach where coachid=#{id};
     </select>
 
         <insert id="addCoach"  parameterType="com.jz.table.entity.Coach">

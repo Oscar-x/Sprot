@@ -1,6 +1,9 @@
 package com.jz.table.dao;
 
+import com.jz.table.entity.ClassInfo;
 import com.jz.table.entity.Coach;
+import com.jz.table.entity.UserInfo;
+
 import java.util.List;
 
 public interface CoachDao {
@@ -14,4 +17,9 @@ public interface CoachDao {
     int updateCoach(Coach coach);
     //删除
     int delCoach(Integer id);
+
+    //登录判断
+    Coach coachLogin(Coach coach);
+
+    List<Coach> selectCoach(Integer id);
 }

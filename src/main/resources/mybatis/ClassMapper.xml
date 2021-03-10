@@ -5,8 +5,12 @@
         select * from class;
     </select>
 
+    <select id="selectCoach" resultType="com.jz.table.entity.ClassInfo">
+        select * from class where coachid = #{id};
+    </select>
+
     <insert id="addClass"  parameterType="com.jz.table.entity.ClassInfo">
-           INSERT INTO class(project,class_name,class_num) VALUES (#{project},#{class_name},#{class_num})
+        INSERT INTO class(project,class_name,class_num,statu,coachid,addtime,traintime,dataline,classgoal,trainnum,amount) VALUES (#{project},#{class_name},#{class_num},0,#{coachid},#{addtime},#{traintime},#{dataline},#{classgoal},#{trainnum},#{amount})
         </insert>
 
     <select id="findById" parameterType="java.lang.Integer" resultType="com.jz.table.entity.ClassInfo">
@@ -20,4 +24,45 @@
     <delete id="delClass" parameterType="java.lang.Integer">
          DELETE from class WHERE classid = #{id}
         </delete>
+
+    <resultMap id="MyClassById" type="com.jz.table.entity.ClassInfo">
+        <id column="classid" property="classid"></id>
+        <result column="coachid" property="coachid"></result>
+        <result column="userid" property="userid"></result>
+        <result column="class_name" property="class_name"></result>
+        <result column="class_num" property="class_num"></result>
+        <result column="project" property="project"></result>
+        <result column="statu" property="statu"></result>
+        <result column="addtime" property="addtime"></result>
+        <result column="dataline" property="dataline"></result>
+        <result column="traintime" property="traintime"></result>
+        <result column="classgoal" property="classgoal"></result>
+        <result column="trainnum" property="trainnum"></result>
+        <result column="amount" property="amount"></result>
+        <collection property="coachs" ofType="com.jz.table.entity.Coach">
+            <id column="coachid" property="coachid"></id>
+            <result column="coach_name" property="coach_name"></result>
+            <result column="coach_sex" property="coach_sex"></result>
+            <result column="touch_project" property="touch_project"></result>
+            <result column="phone" property="phone"></result>
+            <result column="price" property="price"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getClassByCoachId" resultMap="MyClassById">
+        select * from class s join coach c ON s.coachid=c.coachid WHERE s.coachid=#{id}
+    </select>
+
+    <select id="openClass" resultMap="MyClassById">
+        select * from class s join coach c ON s.coachid=c.coachid WHERE s.statu = 0;
+--         select * from class where statu = 0;
+    </select>
+
+    <select id="getClassId" resultMap="MyClassById">
+        select * from class s join coach c ON s.coachid=c.coachid WHERE s.classid=#{id}
+    </select>
+
+    <update id="closeclass" parameterType="com.jz.table.entity.ClassInfo">
+        update  class SET statu=1  WHERE classid = #{classid}
+    </update>
 </mapper>

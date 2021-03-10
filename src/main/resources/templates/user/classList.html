@@ -26,6 +26,13 @@
         <th>班级名</th>
         <th>班级人数</th>
         <th>项目</th>
+        <th>状态</th>
+        <th>添加时间</th>
+        <th>开始训练时间</th>
+        <th>训练结束时间</th>
+        <th>班级目标</th>
+        <th>每周训练次数</th>
+        <th>班级价格</th>
         <th>操 作</th>
     </tr>
     <tr th:each="class:${list}">
@@ -33,7 +40,14 @@
         <td  align="center" th:text="${class.class_name}"></td>
         <td  align="center" th:text="${class.class_num}"></td>
         <td  align="center" th:text="${class.project}"></td>
-        <td  align="center"><a th:href="@{'/goupClass/'+${class.classid}}">修改</a>
+        <td  align="center" th:text="${class.statu}"></td>
+        <td  align="center" th:text="${class.addtime}"></td>
+        <td  align="center" th:text="${class.dataline}"></td>
+        <td  align="center" th:text="${class.traintime}"></td>
+        <td  align="center" th:text="${class.classgoal}"></td>
+        <td  align="center" th:text="${class.trainnum}"></td>
+        <td  align="center" th:text="${class.amount}"></td>
+        <td  align="center"><a th:href="@{'/goupClass/'+${class.classid}}">修改</a><br>
             <a th:href="@{'/godelClass/'+${class.classid}}">删除</a>
         </td>
     </tr>

@@ -27,8 +27,12 @@
     </update>
 
     <delete id="delUser" parameterType="java.lang.Integer">
-     DELETE from userinfo WHERsE userid = #{id}
+     DELETE from userinfo where userid = #{id}
     </delete>
+
+    <update id="joinclass" parameterType="com.jz.table.entity.UserInfo">
+        update  userinfo SET classid=#{classid} WHERE userid = #{userid}
+    </update>
 
 <!--    <select id="selectPage" resultType="com.jz.table.entity.UserInfo">-->
 <!--      SELECT * FROM userinfo limit #{param1}, #{param2}-->

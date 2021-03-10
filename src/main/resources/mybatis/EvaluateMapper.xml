@@ -5,9 +5,9 @@
         select * from evaluate
     </select>
 
-<!--    <insert id="addField"  parameterType="com.jz.table.entity.Field">-->
-<!--           INSERT INTO field(project,address,price) VALUES (#{project},#{address},#{price})-->
-<!--        </insert>-->
+    <insert id="addEvaluate"  parameterType="com.jz.table.entity.Evaluate">
+           INSERT INTO evaluate(userid,content,coachid) VALUES (#{userid},#{content},#{coachid})
+        </insert>
 
     <select id="findById" parameterType="java.lang.Integer" resultType="com.jz.table.entity.Evaluate">
           SELECT  * FROM evaluate where evaluate_id = #{id}
@@ -20,4 +20,20 @@
     <delete id="delEvaluate" parameterType="java.lang.Integer">
          DELETE from evaluate WHERE evaluate_id = #{id}
         </delete>
+
+    <resultMap id="userEvaluation" type="com.jz.table.entity.Evaluate">
+        <id column="evaluate_id" property="evaluate_id"></id>
+        <result column="coachid" property="coachid"></result>
+        <result column="userid" property="userid"></result>
+        <result column="content" property="content"></result>
+        <collection property="users" ofType="com.jz.table.entity.UserInfo">
+            <id column="userid" property="userid"></id>
+            <result column="account" property="account"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getEvaluationByCoachId" resultMap="userEvaluation">
+        select * from evaluate e join userinfo u ON e.userid=u.userid where e.coachid=#{id}
+    </select>
+
 </mapper>

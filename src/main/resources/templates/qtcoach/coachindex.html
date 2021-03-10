@@ -1,10 +1,245 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>教练端</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        *{margin:0;padding:0;}
+        li,ol,ul{list-style:none;}
+        a{color:#555;text-decoration:none;}
+        a:hover{color:#0380FF;text-decoration:none;}
+        #header{position:fixed;top:0;left:0;z-index:99;display:flex;width:100%;height:100px;background-color: #2D93CA;justify-content:center;align-items:center;}
+        .nav{position:relative;display:flex;box-sizing:border-box;width:80%;height:40px;flex-direction:row;align-items:center;}
+        .nav li{z-index:99;display:flex;margin-right:10px;flex:1;align-items:center;justify-content:center;}
+        .nav li a{padding:0 10px;white-space:nowrap;font-size:18px;}
+        /*.nav_focus{position:absolute;width:100px;height:40px;border:1px solid #0380FF;border-radius:20px;box-shadow:0 0 10px rgba(0,0,0,.5);}!*当前样式层*!*/
+        .container{margin-top:100px;}/*上边距给一个顶部的高度，不至于被顶部导航覆盖*/
+        .container>div{height:800px;}
+        #con_1{background-color:#ddf8ff;}
+        #con_2{background-color:#f3ddff;}
+        #con_3{background-color:#75b46f;}
+        #con_4{background-color:#cfe053;}
+        #con_5{background-color:#54ade0;}
+        #footer{position:fixed;bottom:0;left:0;z-index:99;display:flex;width:100%;height:100px;background-color:rgba(255,255,255,.3);justify-content:center;align-items:center;}
+        p{
+            font-size: 30px;
+            color: #0C0C0C;
+            margin-left: 47%;
+        }
+        .log-reg{
+            float: right;
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+        .button {
+            background-color: #999999;
+            border: none;
+            color: white;
+            padding: 12px 26px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        span{
+            margin-left: 70px;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
+<!--顶部导航栏-->
+<div  id="header">
+    <ul class="nav">
+        <li><a href="#con_1">主页</a></li>
+        <li><a href="#con_2">我的信息</a></li>
+        <li><a href="#con_3">场地查看</a></li>
+        <li><a href="#con_4">班级管理</a></li>
+        <li><a href="#con_5">关于我们</a></li>
+        <!--        <div class="nav_focus"></div>-->
+    </ul>
+    <div class="log-reg">
+        <a href="/coachlogin" style="color: #f3f3f3">Login</a> | <a href="/gouserregister"style="color: #f3f3f3">Register</a>
+    </div>
+</div>
+<!--内容区-->
+<div class="container">
+    <div id="con_1">
+        1
+    </div>
+    <div id="con_2">
+        <div style="padding-top: 1px">
+            <div style="background-color: #2D93CA;width: 80%;height: 420px;margin: 10% 10%;">
+                <div th:each="coach:${alist}">
+                    <br>
+                    <span>用户名:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${coach.coach_name}"></td></span><br><br><br>
+                    <span>密码:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${coach.coach_pwd}"></td></span><br><br><br>
+                    <span>性别:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${coach.coach_sex}"></td></span><br><br><br>
+                    <span>我的电话:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${coach.phone}"></td></span><br><br><br>
+                    <span>我的邮箱:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${coach.email}"></td></span><br><br>
+                    <span><a th:href="@{'/goupCoach/'+${coach.coachid}}">修改个人信息</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div id="con_3">
+        <div style="background-color: #0380FF;width: 100%;height:100px; "><p>场地查看</p></div>
+        <h1>场地查看</h1>
+        <table width="100%" border="1" cellspacing="0">
+            <thead>
+            <tr>
+                <th>场地编号</th>
+                <th>项 目</th>
+                <th>地 址</th>
+                <th>价 格</th>
+            </tr>
+            <tr th:each="field:${flist}">
+                <td  align="center" th:text="${field.fieldid}"></td>
+                <td  align="center" th:text="${field.project}"></td>
+                <td  align="center" th:text="${field.address}"></td>
+                <td  align="center" th:text="${field.price}"></td>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+
+    <div id="con_4">
+        <div style="background-color: #0380FF;width: 100%;height:100px; "><p>我的班级</p></div>
+       <h1>我的班级</h1>
+        <button  class="button" style="float: right" onclick="add()">添加班级</button>
+        <table width="100%" border="1" cellspacing="0">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>班级名</th>
+                <th>班级人数</th>
+                <th>项目</th>
+                <th>状态</th>
+                <th>添加时间</th>
+                <th>开始训练时间</th>
+                <th>训练结束时间</th>
+                <th>班级目标</th>
+                <th>每周训练次数</th>
+                <th>班级价格</th>
+                <th>教练</th>
+                <th>操 作</th>
+            </tr>
+            <tr th:each="class:${list}">
+                <td  align="center" th:text="${class.classid}"></td>
+                <td  align="center" th:text="${class.class_name}"></td>
+                <td  align="center" th:text="${class.class_num}"></td>
+                <td  align="center" th:text="${class.project}"></td>
+                <td  align="center" th:text="${class.statu}"></td>
+                <td  align="center" th:text="${class.addtime}"></td>
+                <td  align="center" th:text="${class.dataline}"></td>
+                <td  align="center" th:text="${class.traintime}"></td>
+                <td  align="center" th:text="${class.classgoal}"></td>
+                <td  align="center" th:text="${class.trainnum}"></td>
+                <td  align="center" th:text="${class.amount}"></td>
+                <td  align="center" th:text="${class.coachs.coach_name}"></td>
+                <td  align="center">
+                    <a th:href="@{'/changestatu/'+${class.classid}}">开班</a>
+                    <a th:href="@{'/goupClass/'+${class.classid}}">修改</a>
+                    <a th:href="@{'/godelClass/'+${class.classid}}">删除</a>
+                </td>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div id="con_5">55555</div>
+</div>
+
+<!--底部-->
+<div id="footer">footer</div>
+<script>
+    //添加班级
+    function add() {
+        window.location.href = "/addCoachclass"
+    }
+    /*  导航滚动插件 参数：
+*       navBox: 导航栏
+*       navA: 导航列表，内部嵌套带有锚点的a标签
+*       navFocus: 导航列表当前状态
+*       className：导航列表 当前状态下的className
+* */
+    function navScroll(navBox,navA,navFocus,className) {
+        /* 设置 当前样式 宽度 和 位置 ，初始为第一个导航的位置*/
+        var index = 0; // 设置当前索引 初始为0
+        var $sW = navA.eq(index).outerWidth();
+        var $sL = navA.eq(index).position().left;
+        navFocus.css({  width: $sW, left:  $sL });
+        curClass(navA.eq(index));
+        /* 鼠标移入到导航栏 改变当前样式*/
+        navA.mouseenter(function () {
+            curClass($(this));
+            navFocusMove($(this));
+        });
+        // 鼠标离开导航栏时 当前样式回到 上次位置
+        navBox.mouseleave(function () {
+            navFocus.stop().animate( {
+                width: $sW,
+                left:  $sL
+            },function () {
+                /*给上一次导航添加当前样式*/
+                curClass(navA.eq(index))
+            })
+        });
+        /*滚动到某个部分 对应导航改变样式*/
+        $(document).on('scroll',function(){
+            var    docTop = $(document).scrollTop()+100,
+                offsetTop=[];
+            for(var i = 0,length = navA.length;i<length;i++){
+                /*通过a标签href来获取ID选择器，转换为jq对象 使用jq方法*/
+                offsetTop.push($($(navA[i]).attr("href")).offset().top);
+                if( docTop>=offsetTop[i]){
+                    curNav(navA.eq(i));
+                    curClass(navA.eq(i));
+                    navFocusMove(navA.eq(i))
+                }
+            }
+        });
+        /* 点击导航时 改变导航样式，文档平滑的滚动到指定的位置*/
+        navA.click(function() {
+            curNav($(this));
+            curClass($(this));
+            navFocusMove($(this));
+            $("html, body").animate({
+                /*根据a标签href转换为ID选择器 获取对应位置*/
+                scrollTop: $($(this).attr("href")).offset().top - 100+"px"
+            }, {
+                duration: 500,
+                easing: "swing"
+            });
+            return false;
+        });
+// 当前样式 移动函数
+        function navFocusMove(that) {
+            navFocus.stop().animate( {
+                width: that.outerWidth(),
+                left:  that.position().left
+            })
+        }
+// 添加当前样式，删除其他当前样式
+        function curClass(curnavA) {
+            curnavA.addClass(className).parent().siblings().find('a').removeClass(className);
+        }
+        /*记录上一次当前样式所在位置 */
+        function curNav(obj) {
+            $sW = obj.outerWidth();
+            $sL = obj.position().left;
+            index = obj.parent().index();
+        }
+        // 改变窗口大小时 设置 导航的当前样式
+        $(window).resize(function () {
+                var $sW = navA.eq(index).outerWidth();
+                var $sL = navA.eq(index).position().left;
+                navFocus.css({  width: $sW, left:  $sL });
+            }
+        )
+
+    }
+</script>
 </body>
 </html>

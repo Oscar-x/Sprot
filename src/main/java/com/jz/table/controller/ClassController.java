@@ -17,7 +17,7 @@ public class ClassController {
     @Resource
     private ClassDao classDao;
 
-    @RequestMapping("/classList")//从其他页面操作后返回列表页面（重复登录）
+    @RequestMapping("/classList")
     public String refresh(Model model){
         List<ClassInfo> classList = classDao.FindAll();
         model.addAttribute("list",classList);

@@ -2,6 +2,7 @@ package com.jz.table.entity;
 
 public class UserInfo {
     private Integer userid;
+    private Integer classid;
     private String account;
     private Integer age;
     private String sex;
@@ -10,6 +11,13 @@ public class UserInfo {
     private String email;
     public UserInfo() {}
 
+    public Integer getClassid() {
+        return classid;
+    }
+
+    public void setClassid(Integer classid) {
+        this.classid = classid;
+    }
     public Integer getUserid() {
         return userid;
     }

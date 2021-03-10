@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>添加评论</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div class="wrap" style="height: 700px"><!--登录框的最外部的框框-->
+    <div>教练详情</div>
+    <div style="padding-top: 1px">
+        <div style="background-color: #2D93CA;width: 80%;height: 250px;margin: 10% 10%;">
+            <div th:each="coach:${alist}">
+                <br>
+                <span>教练名:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${coach.coach_name}"></td></span><br><br>
+                <span>性  别:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${coach.coach_sex}"></td></span><br><br>
+                <span>擅长醒目：:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${coach.touch_project}"></td></span><br><br>
+                <span>教练电话:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${coach.phone}"></td></span><br><br>
+                <span>教练邮箱:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${coach.email}"></td></span><br>
+        </div>
+    </div>
+    <hr/>
+    <div>用户评价</div>
+    <hr/>
+    <table width="100%" border="1" cellspacing="0">
+        <thead>
+        <tr>
+            <th>用户名</th>
+            <th>内容</th>
+            <th>教练</th>
+        </tr>
+        <tr th:each="evaluate:${list}">
+            <td  align="center" th:text="${evaluate.users.account}"></td>
+            <td  align="center" th:text="${evaluate.content}"></td>
+            <td  align="center" th:text="${evaluate.coachid}"></td>
+        </tr>
+        </thead>
+    </table>
+    <hr/>
+    <div class="title">
+        添加评论
+    </div>
+    <div class="main">
+        <input  type="hidden" id="userid" th:value="${userid}">
+        <textarea  cols="30" rows="3" class="input" placeholder="请输入内容" id="content" /></textarea><br><br>
+        <input  type="hidden" id="coachid" th:value="${coachid}">
+        <button  onclick="goAddField()" name="sub" id="btn1">评论</button><br><br>
+        <button id="btn2" name="button"  onclick="javascript:history.back(-1);">返回上一页</button>
+    </div>
+    <br><br><br><br><br><br>
+</div>
+</body>
+<script>
+    function goAddField() {
+        var coachid = $("#coachid").val();
+        var content = $("#content").val();
+        var userid = $("#userid").val();
+        $.post("/addEvaluate",{userid:userid,content:content,coachid:coachid},function (res){
+            if (res===true){
+                alert("添加成功");
+                window.location.href = "/evaluationCoach";
+            }else {
+                alert("添加失败，请检查数据重试！");
+            }
+        })
+    }
+</script>
+</html>

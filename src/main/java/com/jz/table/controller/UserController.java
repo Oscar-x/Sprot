@@ -7,9 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.annotation.Resource;
-
 
 @Controller
 public class UserController {
@@ -54,5 +52,6 @@ public class UserController {
         ud.delUser(id);
         return "public/success";
     }
+
 
 }
