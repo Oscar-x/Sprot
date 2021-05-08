@@ -30,4 +30,5 @@ public interface UserDao {
     //搜索
     List<UserInfo>  searchUser(String key,Integer start,Integer len);
 
+
 }

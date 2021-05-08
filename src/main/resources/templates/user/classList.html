@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <title>首页</title>
     <link rel="stylesheet" type="text/css" href="../css/common.css" />
-    <link rel="stylesheet" href="./css/layui.css">
+    <link rel="stylesheet" href="/css/layui.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
 </head>
 
 <body style="background-color: #f3f3f3">
 <div style="width: auto;height: 30px"></div>
 <div class="kj">
-    <form onsubmit="return search()">
-        <input type=text class="ssk" autocomplete="off" autofocus id="search_input">
-        <button class="anniu" onclick="return search()">搜索</button>
-    </form>
+    <input type=text class="ssk" autocomplete="off" autofocus id="search">
+    <button class="anniu" onclick="search_coach()">搜索</button>
 </div>
-<br><br><br><br><br><br><br><br>
-<div style="width: auto;height: 30px;background-color:#9F9F9F"></div>
+<br><br>
 
 <h1 style="font-size: 40px">班级基本信息维护</h1><button  onclick="refresh()" class="refresh">刷新</button><br>
 <table class="layui-table">
@@ -61,7 +58,10 @@
 </div>
 </body>
 <script>
-
+    function search_coach(){
+        var text=$("#search").val();
+        window.location.href ="/searchClasss/"+text
+    }
     function refresh() {
         window.location.href = "/classList"
     }

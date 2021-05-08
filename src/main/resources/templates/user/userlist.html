@@ -16,8 +16,7 @@
 <div style="width: auto;height: 30px"></div>
 <div class="kj">
     <input type=text class="ssk" autocomplete="off" autofocus id="search">
-<!--    <button type="button" class="anniu" onclick="search_user()">搜索</button>-->
-    <button class="anniu"><a  th:href="@{'/searchUser/林'}">搜索</a></button>
+    <button class="anniu" onclick="search_user()">搜索</button>
 </div>
 <br><br><br><br><br><br><br><br>
 <div style="width: auto;height: 30px;background-color:#9F9F9F"></div>
@@ -68,9 +67,7 @@
 <script>
     function search_user(){
         var text=$("#search").val();
-        $.post("/searchUser",{key:text},function (res) {
-        })
-
+        window.location.href ="/searchUser/"+text
     }
     function goadd() {
         window.location.href = "/userlist"

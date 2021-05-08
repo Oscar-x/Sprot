@@ -24,4 +24,6 @@ public interface EvaluateDao {
     List<Evaluate> selectEvaluatePage(Integer start, Integer len);
     //总条数
     int countEvaluatePage();
+
+    List<Evaluate> searchEvaluate(String key,Integer start, Integer len);
 }

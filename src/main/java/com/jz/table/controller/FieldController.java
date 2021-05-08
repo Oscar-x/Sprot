@@ -36,6 +36,27 @@ public class FieldController {
 
         return "user/fieldList";//
     }
+    @RequestMapping("/searchField/{key}")
+    public String searchField(@PathVariable("key")String key,Model model,Integer page){
+        key="%"+key+"%";
+        System.out.println("key--->>>"+key);
+        if (page==null){
+            page = 1;
+        }
+        int offset = (page-1)*LEN;
+        List<Field> fieldListPage = fieldDao.searchField(key,offset,LEN);
+        int pageCount= fieldDao.countFieldPage();
+        pageCount =(int) Math.ceil(pageCount/LEN);
+        pageCount++;
+        model.addAttribute("fieldListPage",fieldListPage);
+        model.addAttribute("fieldPageCount",pageCount);
+
+        return "user/fieldList";//
+    }
+
+
+
+
 
     @RequestMapping("/goAddField")//去添加页面
     public String goAddField(){

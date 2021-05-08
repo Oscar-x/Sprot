@@ -44,4 +44,8 @@
         SELECT count(*) FROM evaluate
     </select>
 
+    <select id="searchEvaluate" resultType="com.jz.table.entity.Evaluate" >
+        select * from evaluate WHERE content LIKE #{param1} limit #{param2}, #{param3};
+    </select>
+
 </mapper>

@@ -16,6 +16,9 @@
         <input class="input"  placeholder="请输入班级名" id="name" th:value="${class.class_name}"/><br><br>
         <input class="input" placeholder="请输入班级人数" id="num" th:value="${class.class_num}"/><br><br>
         <input class="input" placeholder="请输入项 目" id="project" th:value="${class.project}"/><br><br>
+        <input class="input" placeholder="请输入班级目标" id="goal"  th:value="${class.classgoal}"/><br><br>
+        <input class="input" placeholder="请输入加入班级总价格" id="amount" th:value="${class.amount}"/><br><br>
+
         <button  onclick="goupdate()" name="sub" id="btn1">修改</button><br><br>
         <button id="btn2" name="button"  onclick="javascript:history.back(-1);">返回</button>
 
@@ -30,10 +33,12 @@
         var project = $("#project").val();
         var class_name = $("#name").val();
         var class_num = $("#num").val();
-        $.post("/updateClass",{classid:classid,project:project,class_name:class_name,class_num:class_num},function (res) {
+        var class_goal = $("#goal").val();
+        var amount = $("#amount").val();
+        $.post("/updateClass",{classid:classid,project:project,class_name:class_name,class_num:class_num,classgoal:class_goal,amount:amount},function (res) {
             if (res===true) {
                 alert("修改成功");
-                window.location.href="/classList";
+                history.go(-1);
             }else {
                 alert("修改失败，请检查数据重试！");
             }

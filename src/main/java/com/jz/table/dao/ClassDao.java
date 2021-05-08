@@ -43,7 +43,7 @@ public interface ClassDao {
         //总条数
         int countClassPage();
 
-
+        List<ClassInfo> searchClasss(String key,Integer start, Integer len);
 
 
 }

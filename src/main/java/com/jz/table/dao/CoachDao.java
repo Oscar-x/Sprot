@@ -27,4 +27,6 @@ public interface CoachDao {
     int countCoachPage();
     //注册
     int addCoaches(Coach coach);
+    //搜索
+    List<Coach> searchCoach(String key,Integer start,Integer len);
 }

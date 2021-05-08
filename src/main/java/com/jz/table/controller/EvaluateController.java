@@ -38,6 +38,29 @@ public class EvaluateController {
         return "user/evaluateList";//
     }
 
+    @RequestMapping("/searchEvaluate/{key}")
+    public String searchEvaluate(@PathVariable("key")String key,Model model,Integer page){
+
+        key="%"+key+"%";
+        System.out.println("key--->>>"+key);
+        List<Evaluate> evaluateList = evaluateDao.FindAll();
+        model.addAttribute("list",evaluateList);
+
+        if (page==null){
+            page = 1;
+        }
+        int offset = (page-1)*LEN;
+        List<Evaluate> evaluateListPage = evaluateDao.searchEvaluate(key,offset,LEN);
+        int pageCount= evaluateDao.countEvaluatePage();
+        pageCount =(int) Math.ceil(pageCount/LEN);
+        pageCount++;
+        model.addAttribute("evaluateListPage",evaluateListPage);
+        model.addAttribute("evaluatePageCount",pageCount);
+
+
+        return "user/evaluateList";//
+    }
+
     @RequestMapping("/goupEvaluate/{id}")//去修改页面，回显数据
     public String goupEvaluate(@PathVariable("id") int id, Model model){
         Evaluate evaluate = evaluateDao.findById(id);

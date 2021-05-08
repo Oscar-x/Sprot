@@ -24,7 +24,9 @@
         update class
         SET project=#{project},
             class_name=#{class_name},
-            class_num=#{class_num}
+            class_num=#{class_num},
+            classgoal=#{classgoal},
+            amount=#{amount}
         WHERE classid = #{classid}
     </update>
 
@@ -160,5 +162,9 @@
 
     <select id="countClassPage" resultType="int">
         SELECT count(*) FROM class
+    </select>
+
+    <select id="searchClasss" resultType="com.jz.table.entity.ClassInfo" >
+        select * from class WHERE class_name LIKE #{param1} limit #{param2}, #{param3};
     </select>
 </mapper>

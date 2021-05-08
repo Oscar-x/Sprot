@@ -42,6 +42,9 @@
         SELECT count(*) FROM coach
     </select>
 
+    <select id="searchCoach" resultType="com.jz.table.entity.Coach" >
+        select * from coach WHERE coach_name LIKE #{param1} limit #{param2}, #{param3};
+    </select>
 
 
 </mapper>

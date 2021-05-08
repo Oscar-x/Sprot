@@ -21,4 +21,7 @@ public interface FieldDao {
     List<Field> selectFieldPage(Integer start,Integer len);
     //总条数
     int countFieldPage();
+
+    List<Field> searchField(String key,Integer start,Integer len);
+
 }

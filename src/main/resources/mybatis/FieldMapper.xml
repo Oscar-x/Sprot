@@ -29,4 +29,9 @@
         SELECT count(*) FROM field
     </select>
 
+    <select id="searchField" resultType="com.jz.table.entity.Field" >
+        select * from field WHERE address LIKE #{param1} limit #{param2}, #{param3};
+    </select>
+
+
 </mapper>

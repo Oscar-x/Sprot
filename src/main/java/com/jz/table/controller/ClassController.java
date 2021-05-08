@@ -20,14 +20,30 @@ public class ClassController {
     private static  final  int LEN = 10;
     @RequestMapping("/classList")
     public String refresh(Model model,Integer page){
-        List<ClassInfo> classList = classDao.FindAll();
-        model.addAttribute("list",classList);
-
         if (page==null){
             page = 1;
         }
         int offset = (page-1)*LEN;
         List<ClassInfo> classListPage = classDao.selectClassPage(offset,LEN);
+        int pageCount= classDao.countClassPage();
+        pageCount =(int) Math.ceil(pageCount/LEN);
+        pageCount++;
+        model.addAttribute("classListPage",classListPage);
+        model.addAttribute("classPageCount",pageCount);
+        return "user/classList";//
+    }
+
+    @RequestMapping("/searchClasss/{key}")
+    public String searchClasss(@PathVariable("key")String key,Model model,Integer page){
+        key="%"+key+"%";
+        System.out.println("key--->>>"+key);
+
+
+        if (page==null){
+            page = 1;
+        }
+        int offset = (page-1)*LEN;
+        List<ClassInfo> classListPage = classDao.searchClasss(key,offset,LEN);
         int pageCount= classDao.countClassPage();
         pageCount =(int) Math.ceil(pageCount/LEN);
         pageCount++;
@@ -71,6 +87,13 @@ public class ClassController {
     @RequestMapping("/godelClass/{id}")//删除
     public String delClass(@PathVariable("id") Integer id){
         classDao.delClass(id);
-        return "qtuser/index";
+        return "public/Classsc";
+    }
+
+
+    @RequestMapping("/godeleteClass/{id}")//删除
+    public String deleteClass(@PathVariable("id") Integer id){
+        classDao.delClass(id);
+        return "public/delClassSc";
     }
 }

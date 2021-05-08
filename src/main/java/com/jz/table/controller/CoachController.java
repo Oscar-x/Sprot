@@ -38,6 +38,26 @@ public class CoachController {
         return "user/coachList";//
     }
 
+    @RequestMapping("/searchCoach/{key}")
+    public String searchCoach(@PathVariable("key")String key,Model model,Integer page){
+
+        key="%"+key+"%";
+        System.out.println("key--->>>"+key);
+        if (page==null){
+            page = 1;
+        }
+        int offset = (page-1)*LEN;
+        List<Coach> coachListPage = coachDao.searchCoach(key,offset,LEN);
+        int pageCount= coachDao.countCoachPage();
+        pageCount =(int) Math.ceil(pageCount/LEN);
+        pageCount++;
+        model.addAttribute("coachListPage",coachListPage);
+        model.addAttribute("coachPageCount",pageCount);
+
+        return "user/coachList";//
+    }
+
+
     @RequestMapping("/goAddCoach")//去添加页面
     public String goAddCoach(){
         return "user/addCoach";

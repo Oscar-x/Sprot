@@ -73,7 +73,7 @@ public class CoachClassController {
         model.addAttribute("alist",session.getAttribute("aa"));
         List<Content> contentList = contentDao.CoachUser(coachid);
         model.addAttribute("userlist",contentList);
-        return "qtcoach/coachindex";//
+        return "qtcoach/index";//
     }
 
 
