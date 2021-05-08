@@ -9,6 +9,16 @@ import java.util.List;
 
 public class ClassInfo {
     private Integer classid;
+    private Integer userid;
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
     private String class_name;
     private String class_num;
     private String project;
@@ -38,6 +48,15 @@ public class ClassInfo {
 
     Coach coachs;
 
+    UserInfo users;
+
+    public UserInfo getUsers() {
+        return users;
+    }
+
+    public void setUsers(UserInfo users) {
+        this.users = users;
+    }
 
     public Coach getCoachs() {
         return coachs;
@@ -70,7 +89,7 @@ public class ClassInfo {
     }
 
     public String getDataline() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(getDataline1());
     }
 
@@ -82,7 +101,7 @@ public class ClassInfo {
         return traintime;
     }
     public String getTraintime(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
         return sdf.format(getTraintime1());
     }
 

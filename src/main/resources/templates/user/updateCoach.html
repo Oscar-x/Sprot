@@ -41,7 +41,7 @@
         $.post("/updateCoach",{coachid:coachid,coach_name:coach_name,coach_pwd:coach_pwd,coach_sex:coach_sex,touch_project:touch_project,phone:phone,email,email},function (res) {
             if (res==true) {
                 alert("修改成功");
-                window.location.href="/coachList";
+                history.go(-1);
             }else {
                 alert("修改失败，请检查数据重试！");
             }

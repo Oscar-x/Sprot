@@ -3,6 +3,8 @@ package com.jz.table.dao;
 
 
 import com.jz.table.entity.ClassInfo;
+import com.jz.table.entity.Coach;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -28,4 +30,20 @@ public interface ClassDao {
         ClassInfo getClassId(Integer id);
 
         int closeclass(Integer id);
+
+        List<ClassInfo> sortbasketball();
+        List<ClassInfo> sortSwim();
+        List<ClassInfo> sortLongrun();
+        List<ClassInfo> sortJump();
+        List<ClassInfo> sortPullup();
+        List<ClassInfo> sortSolidball();
+        List<ClassInfo> sortAllClass();
+        //分页查询
+        List<ClassInfo> selectClassPage(Integer start, Integer len);
+        //总条数
+        int countClassPage();
+
+
+
+
 }

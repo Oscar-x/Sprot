@@ -4,14 +4,14 @@ public class Content {
     private Integer id;
     private Integer userid;
     private Integer classid;
-    ClassInfo classInfo;
+    ClassInfo classes;
 
-    public ClassInfo getClassInfo() {
-        return classInfo;
+    public ClassInfo getClasses() {
+        return classes;
     }
 
-    public void setClassInfo(ClassInfo classInfo) {
-        this.classInfo = classInfo;
+    public void setClasses(ClassInfo classes) {
+        this.classes = classes;
     }
 
     public Integer getId() {

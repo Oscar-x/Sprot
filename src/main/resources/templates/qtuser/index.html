@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head>
+    <meta charset="utf-8">
+    <title>中学生体育训练管理平台</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta content="Metronic Shop UI description" name="description">
+    <meta content="Metronic Shop UI keywords" name="keywords">
+    <meta content="keenthemes" name="author">
+
+    <meta property="og:site_name" content="-CUSTOMER VALUE-">
+    <meta property="og:title" content="-CUSTOMER VALUE-">
+    <meta property="og:description" content="-CUSTOMER VALUE-">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+    <meta property="og:url" content="-CUSTOMER VALUE-">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Fonts START -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
+          rel="stylesheet" type="text/css">
+    <!-- Fonts END -->
+    <!-- Global styles BEGIN -->
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Global styles END -->
+    <!-- Page level plugin styles BEGIN -->
+    <link href="../assets/pages/css/animate.css" rel="stylesheet">
+    <link href="../assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <!-- Page level plugin styles END -->
+    <!-- Theme styles BEGIN -->
+    <link href="..//assets/pages/css/components.css" rel="stylesheet">
+    <link href="../assets/pages/css/slider.css" rel="stylesheet">
+    <link href="../assets/onepage/css/style.css" rel="stylesheet">
+    <link href="../assets/onepage/css/style-responsive.css" rel="stylesheet">
+    <link href="../assets/onepage/css/themes/red.css" rel="stylesheet" id="style-color">
+    <link href="../assets/onepage/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <style>
+        p{ font-size: 120%;
+        flood-color: #0C0C0C
+        }
+        .sort {
+            font-size: 18px;
+            margin: 30px;
+            padding-top: 10px;
+        }
+        .col-md-3{width: 33%}
+        .card-img-top{
+            width: 360px;
+            height: 360px;
+        }
+        .classInfo{
+            font-size: 150%;
+            color: rgba(35,15,29,0.9);
+        }
+    </style>
+    <!-- Theme styles END -->
+</head>
+<!--DOC: menu-always-on-top class to the body element to set menu on top -->
+<body class="menu-always-on-top" onclick="body_onload()">
+
+<!-- Header BEGIN -->
+<div class="header header-mobi-ext">
+    <div class="container">
+        <div class="row">
+            <!-- Logo BEGIN -->
+            <div class="col-md-2 col-sm-2">
+                <span style="padding-top: 5px;font-size: 200%;color: rgba(50,77,255,0.54)">启明教育</span>
+            </div>
+            <!-- Logo END -->
+            <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+            <!-- Navigation BEGIN -->
+            <div class="col-md-10 pull-right">
+                <ul class="header-navigation">
+                    <li class="current"><a href="#promo-block">首页</a></li>
+                    <li><a href="#JoinClass">加入班级</a></li>
+                    <li><a href="#tips">训练技巧</a></li>
+                    <li><a href="#myInfo">个人中心</a></li>
+                    <li><a href="#contact">关于我们</a></li>
+                    <li><a href="/userlogin"  style="margin-left: 300px" >Login</a></li>
+                    <li> <a href="/gouserregister" >Register</a></li>
+                </ul>
+            </div>
+            <!-- Navigation END -->
+        </div>
+    </div>
+</div>
+<!-- Header END -->
+<div style="width: 90%;height: auto;margin:0 auto;background-color: rgba(59,106,103,0.07);padding-top: 20px">
+    <!-- Promo block BEGIN -->
+    <div class="promo-block" id="promo-block">
+        <div id="carousel-example-generic" class="carousel slide carousel-slider" style="margin-top: 60px;">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <!-- First slide -->
+                <div class="item carousel-item-one active">
+                    <div class="center-block">
+                        <div class="center-block-wrap">
+                            <div class="center-block-body">
+                                <h2 class="margin-bottom-20 animate-delay carousel-title-v1"
+                                    data-animation="animated fadeInDown">
+                                    中学生 <span class="color-red">体育训练</span> 管理平台
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second slide -->
+                <div class="item carousel-item-two">
+                    <h2 class="carousel-position-one animate-delay carousel-title-v1"
+                        data-animation="animated fadeInDown">
+                        启明 <span class="color-red">教育培训</span> 机构
+                    </h2>
+                    <img class="carousel-position-two hidden-sm hidden-xs animate-delay"
+                         src="../assets/onepage/img/slider/Slide2_iphone_left.png" alt="Iphone"
+                         data-animation="animated fadeInUp">
+                    <img class="carousel-position-three hidden-sm hidden-xs animate-delay"
+                         src="../assets/onepage/img/slider/Slide2_iphone_right.png" alt="Iphone"
+                         data-animation="animated fadeInUp">
+                </div>
+
+                <!-- Third slide -->
+                <div class="item carousel-item-three">
+                    <div class="center-block">
+                        <div class="center-block-wrap">
+                            <div class="center-block-body">
+                                <h3 class="margin-bottom-20 animate-delay carousel-title-v2"
+                                    data-animation="animated fadeInDown">
+                                    孩子中考体育 <br/> 不用愁
+                                </h3>
+                                <span class="carousel-subtitle-v1">专业&nbsp;&nbsp;科学&nbsp;&nbsp;高效</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    <!-- Promo block END -->
+
+    <!-- Team block BEGIN -->
+    <div class="team-block content margin-bottom-40">
+        <div class="container">
+            <div class="silder_2 clearfix" style="margin-top: 30px;">
+                <div class="front">
+                    <div class="fontRight">
+                        <p>初三体育锻炼的四个阶段</p>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="top_1">
+                        <p>  每年的中招体育考试都会放在中招前的两个月左右，4月份开考，不要以为时间还很长，到时临阵磨磨枪，拿个四五十分小意思~现在一个很常见的误区就是：很多学生和家长认为只要腿脚勤快，考前多跑几圈多练几次就可以拿到满分，也正因为如此，把平时大好的锻炼时间耽误了。
+                        </p>
+                    </div>
+                    <div class="top_2">
+                        <div class="top_2Title"><p>1</p></div>
+                        <div class="top_2text"><p>初三体育锻炼第一阶段：9月-10月</p></div>
+
+                    </div>
+                    <div class="footerText">
+                        <p>本阶段约2个月，主要进行速度、力量、弹跳、耐力和灵敏等身体素质的全面综合训练，为形成较全面的身体素质打好基础。在教学训练中应采用各种训练方法和手段，努力提高身体各器官的运动机能水平。在全面发展素质的同时，一般应以发展速度、弹跳为重点，应以中等运动训练量为主。
+                        </p>
+                    </div>
+                    <div class="top_2">
+                        <div class="top_2Title"><p>2</p></div>
+                        <div class="top_2text"><p>中考体育锻炼第二阶段：11月-1月</p></div>
+
+                    </div>
+                    <div class="footerText">
+                        <p>第二阶段(11月-1月)：此阶段应在第一阶段的基础上，注重发展和提高力量素质，特别是上肢力量、下肢力量及腰腹肌力量，并结合跑、跳、投等考试项目，采用各种行之有效的手段，如杠铃、沙包、健身器等，发展各个项目必须具备的专项素质，尽快提高掌握各项技术的速度。</p>
+                        　　<p>本阶段运动量应以大运动量训练为主。由于在该阶段的一月份，也是学生学习任务繁重，面临紧张期末复习考试时期，训练应予调整，不要与文化复习考试争时间，但我们可争取每个星期天安排一定的训练内容。</p>
+                        　　<p>这样既不间断训练，又不影响文化学习，值得一提的是，在期末考试之后，正是寒假休息之时，我们可以利用寒假的充裕时间，进行较大负荷的训练或布置较大负荷的家庭训练任务。
+                    </p>
+                    </div>
+                    <div class="top_2">
+                        <div class="top_2Title"><p>3</p></div>
+                        <div class="top_2text"><p>中考体育锻炼第三阶段：2月-3月</p></div>
+
+                    </div>
+                    <div class="footerText">
+                        <p>第三阶段(2月-3月)：该阶段时间约2个月。要在第二阶段大运动量训练的基础上，调整运动强度和运动负荷，并逐步以提高和巩固运动成绩为目的。</p>
+                        　　<p>由于此阶段一般尚未公布考试项目，因此，在有可能要考的项目，我们都应认真抓好，不可提前“抓题”。</p>
+                        　　<p>在教学训练中，坚持一般身体素质与专项身体素质相结合，为适应考试做好充分准备，当然，此阶段的训练强度应偏大。
+                    </p>
+                    </div>
+                    <div class="top_2">
+                        <div class="top_2Title"><p>4</p></div>
+                        <div class="top_2text"><p>中考体育锻炼第四阶段：4月-5月</p></div>
+
+                    </div>
+                    <div class="footerText">
+                        <p>第四阶段(4月-5月)：本阶段为考试前的最后一个阶段。</p>
+                        　　<p>一般来说，各省、市均已公布了当年的考试项目，考生应在继续提高身体素质和运动水平的基础上，进行完整技术练习。由于我们面临的是考试而不是比赛，因此，我们在此阶段应多采用区别对待，因人而异教学原则。</p>
+                        　　<p>例如某些学生已经能在其中一项考试项目上能够轻松达到满分规定线，那么我们就可以让这一部分学生多化些精力去练习他的弱项，而不必在已经达满分的项目上下功夫了;而对于一些体育成绩相对较差、素质相对较弱的同学来说，则应以充分掌握好技术动作的前提下，结合个人特点，稳打稳抓。从他相对较容易进步的项目上进行训练，结合个人特点，稳打稳抓。从他相对较容易进步的项目上进行训练，以激发他们斗志，切不可因不行而放弃。</p>
+                        　　<p>考试前，有条件的学校可以适当地安排一个短时期进行集训，如考试前的全国大假“五一”节，便是一个最好的集训时间，学校还可以举行一些小型多样的比赛、模拟考试训练等，从运动技能、技巧及心理承受能力上为学生适应考试做好充分准备。
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team block END -->
+
+
+    <!-- Choose us block BEGIN -->
+    <div class="choose-us-block content text-center margin-bottom-40" id="JoinClass">
+        <div class="container">
+            <h2>加 入 <strong>班级</strong></h2>
+            <ul class="nav navbar-nav" >
+                <li class="sort"><a href="/AllClass#JoinClass">全部班级</a></li>
+                <li class="sort"><a href="/basketball1#JoinClass">篮球</a></li>
+                <li class="sort"><a href="/longrun1#JoinClass">长跑</a></li>
+                <li class="sort"><a href="/swin1#JoinClass">游泳</a></li>
+                <li class="sort"><a href="/Jump1#JoinClass">立定跳远</a></li>
+                <li class="sort"><a href="/Pullup1#JoinClass">引体向上</a></li>
+                <li class="sort"><a href="/Solidball1#JoinClass">实心球</a></li>
+            </ul>
+                <div class="col-md-3 col-sm-6 col-xs-12"  th:each="class:${list}" style="width: 25%">
+                    <div class="pricing-item" >
+                        <div class="pricing-head">
+                            <h3 th:text="${class.class_name}"></h3>
+                            <p th:text="${class.project}"></p>
+                        </div>
+                        <div class="pricing-content">
+                            <div class="pi-price">
+                                <strong>$<em th:text="${class.amount}"></em></strong>
+                                <p th:text="${class.coachs.coach_name}"></p>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li> 报名截止日期：<i th:text="${class.dataline}"></i></li>
+<!--                                <li th:text="${class.dataline}"></li>-->
+<!--                                <li th:text="${class.dataline}"></li>-->
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a class="btn btn-default" th:href="@{'/classdetails/'+${class.classid}}">加入班级</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <!-- Choose us block END -->
+
+
+    <!-- Prices block BEGIN -->
+    <div class="prices-block content content-center" id="tips">
+        <div class="container">
+            <h2 class="margin-bottom-50"><strong>训练</strong>技巧</h2>
+            <div class="row">
+                <!-- Pricing item BEGIN -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricing-item">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="../images/篮球.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">篮球训练技巧</h5>
+                                <p class="card-text" style="font-size: 100%">
+                                    1、原地运球<br>2、运球急起急停<br>3、体前换手变向运球<br><br><br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="../qtuser/basketball.html" class="btn btn-default">详细介绍</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pricing item END -->
+                <!-- Pricing item BEGIN -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricing-item">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="../images/长跑.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">长跑训练技巧</h5>
+                                <p class="card-text" style="font-size: 100%">
+                                    1、持续训练法<br>
+                                    2、间歇训练法<br>
+                                    <br><br><br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="../qtuser/longRun.html" class="btn btn-default">详细介绍</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pricing item END -->
+                <!-- Pricing item BEGIN -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricing-item">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="../images/游泳.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">游泳训练技巧</h5>
+                                <p class="card-text" style="font-size: 100%">
+                                 1.持续训练  <br>
+                                 2.任意变速训练<br>
+                                 3.间歇性训练 <br>
+                               　4.目标设定训练<br>
+                               　5.短冲训练  <br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="../qtuser/swim.html" class="btn btn-default">详细介绍</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pricing item END -->
+                <!-- Pricing item BEGIN -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricing-item">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="../images/跳远.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">立定跳远训练技巧</h5>
+                                <p class="card-text" style="font-size: 100%">
+                                    1、持续训练法<br>
+                                    2、间歇训练法<br>
+                                    <br><br><br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="../qtuser/longJump.html" class="btn btn-default">详细介绍</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pricing item END -->
+                <!-- Pricing item BEGIN -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricing-item">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="../images/引体向上.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">引体向上训练技巧</h5>
+                                <p class="card-text" style="font-size: 100%">
+                                    1、引体向上是男生选考项目<br>
+                                    2、主要是靠背阔肌的力量 <br>
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="../qtuser/pullUp.html" class="btn btn-default">详细介绍</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pricing item END -->
+                <!-- Pricing item BEGIN -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricing-item">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="../images/实心球.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">实心球训练技巧</h5>
+                                <p class="card-text" style="font-size: 100%">
+                                    1、握球和持球<br>
+                                    2、预备姿势 <br>
+                                    3、预摆   <br>
+                                    4、最后用力 <br>
+                                    5、辅助练习 <br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="../qtuser/solidBall.html" class="btn btn-default">详细介绍</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pricing item END -->
+            </div>
+        </div>
+    </div>
+    <!-- Prices block END -->
+    <div class="prices-block content content-center" id="myInfo">
+        <div class="container">
+            <h2 class="margin-bottom-50" id="info"><strong>个人</strong>中心</h2>
+            <div class="row">
+                <div class="list-group" th:each="user:${userlogon}">
+                    <p class="list-group-item list-group-item-action list-group-item-secondary" style="font-size: 180%"><span>用户名:</span>&nbsp;&nbsp;&nbsp;<span th:text="${user.account}"></span></p>
+                    <p class="list-group-item list-group-item-action list-group-item-success" style="font-size: 180%"><span>密码:</span>&nbsp;&nbsp;&nbsp;<span type="password" th:text="${user.user_pwd}"></span></p>
+                    <p class="list-group-item list-group-item-action list-group-item-danger" style="font-size: 180%"><span>性别:</span>&nbsp;&nbsp;&nbsp;<span th:text="${user.sex}"></span></p>
+                    <p class="list-group-item list-group-item-action list-group-item-warning" style="font-size: 180%"><span>我的电话:</span>&nbsp;&nbsp;&nbsp;<span th:text="${user.phone}"></span></p>
+                    <p class="list-group-item list-group-item-action list-group-item-info" style="font-size: 180%"><span>我的邮箱:</span>&nbsp;&nbsp;&nbsp;<span th:text="${user.email}"></span></p>
+                    <p class="list-group-item list-group-item-action list-group-item-secondary" style="font-size: 180%">
+                        <span><a class="btn btn-default" th:href="@{'/goupdate/'+${user.userid}}" style="flood-color: #0C0C0C;font-size: 180%;background-color: rgba(255,166,152,0.33)">修改个人信息</a>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="prices-block content content-center">
+        <div class="container">
+            <h2 class="margin-bottom-50" id="myClass"> 我的<strong>班级</strong></h2>
+            <div class="row">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="classInfo"  scope="col">班级名</th>
+                        <th class="classInfo"  scope="col">班级人数</th>
+                        <th class="classInfo"  scope="col">项目</th>
+                        <th class="classInfo"  scope="col">状态</th>
+                        <th class="classInfo"  scope="col">开始训练时间</th>
+                        <th class="classInfo"  scope="col">训练结束时间</th>
+                        <th class="classInfo"  scope="col">每周训练次数</th>
+                        <th class="classInfo"  scope="col">班级价格</th>
+                        <th class="classInfo"  scope="col">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="content:${conlist}">
+                        <td class="classInfo" align="center" th:text="${content.classes.class_name}"></td>
+                        <td class="classInfo" align="center" th:text="${content.classes.class_num}"></td>
+                        <td class="classInfo" align="center" th:text="${content.classes.project}"></td>
+                        <td class="classInfo" align="center" th:text="${content.classes.statu}" style="color: #ac2925"></td>
+                        <td class="classInfo" align="center" th:text="${content.classes.dataline}"></td>
+                        <td class="classInfo" align="center" th:text="${content.classes.traintime}"></td>
+                        <td class="classInfo" align="center" th:text="${content.classes.trainnum}"></td>
+                        <td class="classInfo" align="center" th:text="${content.classes.amount}"></td>
+                        <td class="classInfo"><a th:href="@{'/evaluationCoach/'+${content.classes.coachs.coachid}}" style="background-color: rgba(249,235,255,0.29)">查看教练详情</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="prices-block content content-center">
+        <div class="container">
+            <h2 class="margin-bottom-50" id="assess"> 每日<strong>评价</strong></h2>
+            <div class="row">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th class="classInfo" scope="col">教练</th>
+                        <th class="classInfo" scope="col">评价内容</th>
+                        <th class="classInfo" scope="col">评价时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="assess:${assesslist}">
+                        <th class="classInfo" th:text="${assess.coaches.coach_name}"></th>
+                        <th class="classInfo" th:text="${assess.content}"></th>
+                        <th class="classInfo" th:text="${assess.updatetime}"></th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Testimonials block BEGIN -->
+    <div class="testimonials-block content content-center margin-bottom-65">
+        <div class="container">
+            <h2>关于 <strong>我们</strong></h2>
+            <h4>启明教育培训机构</h4>
+            <div class="carousel slide" data-ride="carousel" id="testimonials-block">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <!-- Carousel items -->
+                    <div class="active item">
+                        <blockquote>
+                            <p>启明教育机构立志于打造学生和教练沟通的桥梁，整合资源，解决中学生学生找不到专业训练的需求，帮助教练实现线上招收学员的问题。励志成为一个这样一个沟通的桥梁。</p>
+                        </blockquote>
+                    </div>
+                    <!-- Carousel items -->
+                    <div class="item">
+                        <blockquote>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;启明教育培训机构专注于中学生体能训练.每年的中招体育考试都会放在中招前的两个月左右。如果仅仅只是考前突击锻炼，对于体质提升并没有什么作用，相反可能因为运动量过大对身体造成损伤。</p>
+                        </blockquote>
+                    </div>
+                    <!-- Carousel items -->
+                    <div class="item">
+                        <blockquote>
+                            <p>中考体育项目大致分为：足篮排、立定跳远、引体向上、仰卧起坐、长短跑、跳绳、游泳、实心球等，每项的练习方法与技巧都有不同！本专题针对各个体育项目的训练方法、技巧等等都有详细介绍。</p>
+                        </blockquote>
+                    </div>
+                </div>
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#testimonials-block" data-slide-to="0" class="active"></li>
+                    <li data-target="#testimonials-block" data-slide-to="1"></li>
+                    <li data-target="#testimonials-block" data-slide-to="2"></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonials block END -->
+
+
+    <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN BOTTOM ABOUT BLOCK -->
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <h2>关于我们</h2>
+                    <p>启明教育培训机构专注于中学生体能训练，教练经过平台的认证。对体育知识，科学锻炼体能方法，有丰富的经验和见解。为您的孩子在中考中取得满意成绩，提供机会的平台。</p>
+                </div>
+                <!-- END BOTTOM ABOUT BLOCK -->
+                <!-- BEGIN TWITTER BLOCK -->
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <h2 class="margin-bottom-0">联系方式</h2>
+                    <img style="width: 200px;height: 200px" src="../images/联系方式.png" alt="Card image cap">
+                </div>
+                <!-- END TWITTER BLOCK -->
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <!-- BEGIN BOTTOM CONTACTS -->
+                    <address class="margin-bottom-20">
+                        Phone:180 5077 1060 <br>
+                        Email: 2240588361@qq.com<br>
+                    </address>
+                    <!-- END BOTTOM CONTACTS -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PRE-FOOTER -->
+</div>
+<!-- BEGIN FOOTER -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN COPYRIGHT -->
+            <div class="col-md-4 col-sm-4">
+                <div class="copyright">2021 © 2017 计算机科学与技术 毕业设计</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END FOOTER -->
+<a href="#promo-block" class="go2top scroll">顶</a>
+
+<!--[if lt IE 9]>
+<script src="../assets/plugins/respond.min.js"></script>
+<![endif]-->
+<!-- Load JavaScripts at the bottom, because it will reduce page load time -->
+<!-- Core plugins BEGIN (For ALL pages) -->
+<script src="../assets/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- Core plugins END (For ALL pages) -->
+<!-- Core plugins BEGIN (required only for current page) -->
+<script src="../assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+<script src="../assets/plugins/jquery.easing.js"></script>
+<script src="../assets/plugins/jquery.parallax.js"></script>
+<script src="../assets/plugins/jquery.scrollTo.min.js"></script>
+<script src="../assets/onepage/scripts/jquery.nav.js"></script>
+<!-- Core plugins END (required only for current page) -->
+<!-- Global js BEGIN -->
+<script src="../assets/onepage/scripts/layout.js" type="text/javascript"></script>
+<script src="../assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+<script>
+    jQuery(document).ready(function () {
+        Layout.init();
+    });
+    function body_onload()
+    {
+        if(0 === getcookie('param_cookie')){
+            setcookie("param_cookie",1,10);
+            window.location.reload(true);
+        }
+    }
+</script>
+<!-- Global js END -->
+</body>
+</html>

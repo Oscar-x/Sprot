@@ -20,4 +20,13 @@
     <delete id="delField" parameterType="java.lang.Integer">
          DELETE from field WHERE fieldid = #{id}
         </delete>
+
+    <select id="selectFieldPage" resultType="com.jz.table.entity.Field" >
+        SELECT * FROM field limit #{param1}, #{param2};
+    </select>
+
+    <select id="countFieldPage" resultType="int">
+        SELECT count(*) FROM field
+    </select>
+
 </mapper>

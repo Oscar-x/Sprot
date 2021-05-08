@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="http://tealui.com/components/require.js"></script>
 </head>
 <body>
+<div id="app">
+    <template>
+        <el-button type="text" @click="open">点击打开 Message Box</el-button>
+    </template>
+</div>
 <li class="sort">
     <select id="project" class="a1">
         <option value="1">长跑</option>
@@ -47,17 +58,310 @@
     </tr>
     </thead>
 </table>
+
+<div class="demo-block demo-zh-CN demo-table hover">
+    <div class="source">
+        <div>
+            <div class="el-table el-table--fit el-table--border el-table--scrollable-y el-table--enable-row-hover el-table--enable-row-transition"
+                 style="width: 100%; height: auto;">
+                <div class="el-table__header-wrapper">
+                    <table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width: 88.8%;">
+                        <colgroup>
+                            <col name="el-table_8_column_22" width="100">
+                            <col name="el-table_8_column_23" width="100">
+                            <col name="el-table_8_column_24" width="100">
+                            <col name="el-table_8_column_25" width="100">
+                            <col name="el-table_8_column_26" width="100">
+                            <col name="el-table_8_column_27" width="100">
+                            <col name="el-table_8_column_26" width="100">
+                            <col name="el-table_8_column_27" width="100">
+                            <col name="gutter" width="17">
+                        </colgroup>
+                        <thead class="has-gutter">
+                        <tr class="">
+                            <th colspan="1" rowspan="1" class="el-table_8_column_22     is-leaf">
+                                <div class="cell">ID</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_8_column_23     is-leaf">
+                                <div class="cell">姓名</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_8_column_24     is-leaf">
+                                <div class="cell">密码</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_8_column_25     is-leaf">
+                                <div class="cell">年龄</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_8_column_26     is-leaf">
+                                <div class="cell">性别</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_8_column_27    is-leaf">
+                                <div class="cell">电话</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_8_column_26     is-leaf">
+                                <div class="cell">邮箱</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_8_column_27    is-leaf">
+                                <div class="cell">操作</div>
+                            </th>
+                            <th class="gutter" style="width: 17px;"></th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="el-table__body-wrapper is-scrolling-none" style="height: 100%;">
+                    <table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 87%;">
+                        <colgroup>
+                            <col name="el-table_8_column_22" width="100">
+                            <col name="el-table_8_column_23" width="100">
+                            <col name="el-table_8_column_24" width="100">
+                            <col name="el-table_8_column_25" width="100">
+                            <col name="el-table_8_column_26" width="100">
+                            <col name="el-table_8_column_27" width="100">
+                            <col name="el-table_8_column_26" width="100">
+                            <col name="el-table_8_column_27" width="100">
+                        </colgroup>
+                        <tbody>
+                        <tr class="el-table__row" th:each="user:${alist}">
+                            <td rowspan="1" colspan="1" class="el-table_8_column_22  " th:text="${user.userid}">
+                            </td>
+                            <td rowspan="1" colspan="1" class="el-table_8_column_23  " th:text="${user.account}">
+                            </td>
+                            <td rowspan="1" colspan="1" class="el-table_8_column_24  " th:text="${user.user_pwd}">
+                            </td>
+                            <td rowspan="1" colspan="1" class="el-table_8_column_25  " th:text="${user.age}">
+                            </td>
+                            <td rowspan="1" colspan="1" class="el-table_8_column_26  " th:text="${user.sex}">
+                            </td>
+                            <td rowspan="1" colspan="1" class="el-table_8_column_27  " th:text="${user.phone}">
+                            </td>
+                            <td rowspan="1" colspan="1" class="el-table_8_column_26  " th:text="${user.email}">
+                            </td>
+                            <td>
+                                <div class="cell">
+                                    <button type="button" class="el-button el-button--default el-button--mini"><!---->
+                                        <!----><span><a class="button" th:href="@{'/goupdate/'+${user.userid}}">修改</a></span></button>
+                                    <button type="button" class="el-button el-button--danger el-button--mini"><!---->
+                                        <!----><span><a class="button" th:href="@{'/godel/'+${user.userid}}">删除</a></span></button>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="demo-block demo-zh-CN demo-table">
+    <div class="source">
+        <div>
+            <div class="el-table el-table--fit el-table--scrollable-x el-table--scrollable-y el-table--enable-row-transition"
+                 style="width: 100%; height: 250px;">
+                <div class="hidden-columns">
+                    <div>
+                        <td rowspan="1" colspan="1" class="el-table_33_column_130  ">
+                            <div class="cell">2016-05-03</div>
+                        </td>
+                    </div>
+                    <div>
+                        <td rowspan="1" colspan="1" class="el-table_33_column_131   is-hidden">
+                            <div class="cell">王小虎</div>
+                        </td>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="el-table__header-wrapper">
+                    <table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width: 930px;">
+                        <colgroup>
+                            <col name="el-table_33_column_130" width="150">
+                            <col name="el-table_33_column_131" width="120">
+                            <col name="el-table_33_column_132" width="120">
+                            <col name="el-table_33_column_133" width="120">
+                            <col name="el-table_33_column_134" width="300">
+                            <col name="el-table_33_column_135" width="120">
+                            <col name="gutter" width="17">
+                        </colgroup>
+                        <thead class="has-gutter">
+                        <tr class="">
+                            <th colspan="1" rowspan="1" class="el-table_33_column_130     is-hidden is-leaf">
+                                <div class="cell">日期</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_33_column_131     is-leaf">
+                                <div class="cell">姓名</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_33_column_132     is-leaf">
+                                <div class="cell">省份</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_33_column_133     is-leaf">
+                                <div class="cell">市区</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_33_column_134     is-leaf">
+                                <div class="cell">地址</div>
+                            </th>
+                            <th colspan="1" rowspan="1" class="el-table_33_column_135     is-leaf">
+                                <div class="cell">邮编</div>
+                            </th>
+                            <th class="gutter" style="width: 17px;"></th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="el-table__body-wrapper is-scrolling-left" style="height: 202px;">
+                    <table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 913px;">
+                        <colgroup>
+                            <col name="el-table_33_column_130" width="150">
+                            <col name="el-table_33_column_131" width="120">
+                            <col name="el-table_33_column_132" width="120">
+                            <col name="el-table_33_column_133" width="120">
+                            <col name="el-table_33_column_134" width="300">
+                            <col name="el-table_33_column_135" width="120">
+                        </colgroup>
+                        <tbody>
+                        <tr class="el-table__row">
+                            <td rowspan="1" colspan="1" class="el-table_33_column_130   is-hidden">
+                                <div class="cell">2016-05-03</div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="el-table_33_column_131  ">
+                                <div class="cell">王小虎</div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="el-table_33_column_132  ">
+                                <div class="cell">上海</div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="el-table_33_column_133  ">
+                                <div class="cell">普陀区</div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="el-table_33_column_134  ">
+                                <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="el-table_33_column_135  ">
+                                <div class="cell">200333</div>
+                            </td>
+                        </tr>
+
+                        <!----></tbody>
+                    </table><!----><!----></div><!---->
+                <div class="el-table__fixed" style="width: 150px; height: 233px;">
+                    <div class="el-table__fixed-header-wrapper">
+                        <table cellspacing="0" cellpadding="0" border="0" class="el-table__header"
+                               style="width: 913px;">
+                            <colgroup>
+                                <col name="el-table_33_column_130" width="150">
+                                <col name="el-table_33_column_131" width="120">
+                                <col name="el-table_33_column_132" width="120">
+                                <col name="el-table_33_column_133" width="120">
+                                <col name="el-table_33_column_134" width="300">
+                                <col name="el-table_33_column_135" width="120">
+                            </colgroup>
+                            <thead class="">
+                            <tr class="">
+                                <th colspan="1" rowspan="1" class="el-table_33_column_130     is-leaf">
+                                    <div class="cell">日期</div>
+                                </th>
+                                <th colspan="1" rowspan="1" class="el-table_33_column_131     is-hidden is-leaf">
+                                    <div class="cell">姓名</div>
+                                </th>
+                                <th colspan="1" rowspan="1" class="el-table_33_column_132     is-hidden is-leaf">
+                                    <div class="cell">省份</div>
+                                </th>
+                                <th colspan="1" rowspan="1" class="el-table_33_column_133     is-hidden is-leaf">
+                                    <div class="cell">市区</div>
+                                </th>
+                                <th colspan="1" rowspan="1" class="el-table_33_column_134     is-hidden is-leaf">
+                                    <div class="cell">地址</div>
+                                </th>
+                                <th colspan="1" rowspan="1" class="el-table_33_column_135     is-hidden is-leaf">
+                                    <div class="cell">邮编</div>
+                                </th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="el-table__fixed-body-wrapper" style="top: 48px; height: 185px;">
+                        <table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 913px;">
+                            <colgroup>
+                                <col name="el-table_33_column_130" width="150">
+                                <col name="el-table_33_column_131" width="120">
+                                <col name="el-table_33_column_132" width="120">
+                                <col name="el-table_33_column_133" width="120">
+                                <col name="el-table_33_column_134" width="300">
+                                <col name="el-table_33_column_135" width="120">
+                            </colgroup>
+                            <tbody>
+                            <tr class="el-table__row">
+                                <td rowspan="1" colspan="1" class="el-table_33_column_130  ">
+                                    <div class="cell">2016-05-03</div>
+                                </td>
+                                <td rowspan="1" colspan="1" class="el-table_33_column_131   is-hidden">
+                                    <div class="cell">王小虎</div>
+                                </td>
+                                <td rowspan="1" colspan="1" class="el-table_33_column_132   is-hidden">
+                                    <div class="cell">上海</div>
+                                </td>
+                                <td rowspan="1" colspan="1" class="el-table_33_column_133   is-hidden">
+                                    <div class="cell">普陀区</div>
+                                </td>
+                                <td rowspan="1" colspan="1" class="el-table_33_column_134   is-hidden">
+                                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                                </td>
+                                <td rowspan="1" colspan="1" class="el-table_33_column_135   is-hidden">
+                                    <div class="cell">200333</div>
+                                </td>
+                            </tr>
+
+                            <!----></tbody>
+                        </table><!----></div><!----></div><!----><!---->
+                <div class="el-table__column-resize-proxy" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="x-row x-row-4">
+        <figure class="x-col">
+            <a href="###">
+                <img class="x-thumbnail" alt="" src="../images/260x260.jpg" width="260px" height="260px">
+            </a>
+            <figcaption><a href="###">我是标题</a></figcaption>
+            <p>我是很长很长的说明</p>
+        </figure>
+        <figure class="x-col">
+            <a href="###">
+                <img class="x-thumbnail" alt="" src="../images/260x260.jpg" width="260px" height="260px">
+            </a>
+            <figcaption><a href="###">我是标题</a></figcaption>
+            <p>我是很长很长的说明</p>
+        </figure>
+    </div>
+</div>
+
 <script>
-    function goSelect() {
-        var project1 = $("#project").val();
-        alert(project1);
-    }
+
 
     function searchuser() {
-        var project = $("#search_input").val();
-        alert(project);
-    }
+        var text=$("#search_input").val();
+        alert(text);
 
-</script>
+    }
+    var Main = {
+        methods: {
+            open() {
+                this.$alert('这是一段内容', '标题名称', {
+                    confirmButtonText: '确定',
+                    callback: action => {
+                        this.$message({
+                            type: 'info',
+                            message: `action: ${action}`
+                        });
+                    }
+                });
+            }
+        }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')</script>
 </body>
 </html>

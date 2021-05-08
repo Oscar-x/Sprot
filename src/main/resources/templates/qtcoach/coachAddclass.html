@@ -1,48 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>添加班级</title>
     <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+    <style>
+        .title{
+            font-size: 300%;
+            color: rgba(255,115,67,0.64);
+            margin: 20px 0 30px 0;
+        }
+        .btn{
+            margin: 0;
+            background-color: rgba(49,255,47,0.64);
+            padding: 20px 100px 20px 100px;
+        }
+    </style>
 </head>
 <body>
-<div class="wrap" style="height: 700px"><!--登录框的最外部的框框-->
-    <div class="title">
+<div style="width: 80%;height: auto;margin:0 auto;background-color: rgba(59,106,103,0.07);padding-top: 20px">
+    <div data-role="content"><!--登录框的最外部的框框-->
+    <div class="title" align="center">
         添加班级信息
     </div>
-    <div class="main">
-        <input class="input"  placeholder="请输入班级名" id="name" type="text"/><br><br>
-        <input class="input"  placeholder="请输入教练ID" id="coachid" type="text"/><br><br>
-        <input class="input" placeholder="请输入班级人数" id="number" type="text"/><br><br>
-        <input class="input" placeholder="请输入项 目" id="project" type="text"/><br><br>
-        <input class="input" placeholder="请输入班级目标" id="goal" type="text" /><br><br>
-        <div><p>选择训练时间</p></div>
-        <select class="input" id="longtime">
-            <option value="1">一周</option>
-            <option value="2">二周</option>
-            <option value="3">三周</option>
-            <option value="4">四周</option>
-            <option value="5">五周</option>
-            <option value="6">六周</option>
-        </select><br><br>
-        <div><p>选择训练次数</p></div>
-        <select class="input" id="num">
-            <option value="1">一周一次</option>
-            <option value="2">一周两次</option>
-            <option value="3">一周三次</option>
-            <option value="4">一周四次</option>
-            <option value="5">一周五次</option>
-            <option value="6">一周六次</option>
-            <option value="7">一周七次</option>
-        </select><br><br>
-        <input class="input" placeholder="请输入截止开班天数" id="dataline" type="text"/><br><br>
-        <input class="input" placeholder="请输入加入班级总价格" id="amount" type="text"/><br><br>
-        <button  onclick="goAddField()" name="sub" id="btn1">添加</button><br><br>
-        <button  id="btn2"  onclick="javascript:history.back(-1);">返回</button>
+        <input type="hidden"   />
+        <form>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input type="hidden" class="form-control form-control-lg" id="coachid" th:value="${coachid}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label col-form-label-lg">班级名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-lg" id="name" placeholder="班级名">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="number" class="col-sm-2 col-form-label col-form-label-lg">班级人数</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-lg" id="number" placeholder="请输入正整数">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="project" class="col-sm-2 col-form-label col-form-label-lg">项 目</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-lg" id="project" placeholder="班级项目名称">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="goal" class="col-sm-2 col-form-label col-form-label-lg">请输入班级目标</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-lg" id="goal" placeholder="255个字以内">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="longtime" class="col-sm-2 col-form-label col-form-label-lg">选择训练时间</label>
+                <div class="col-sm-10">
+                    <select class="input" id="longtime">
+                        <option value="1">一周</option>
+                        <option value="2">二周</option>
+                        <option value="3">三周</option>
+                        <option value="4">四周</option>
+                        <option value="5">五周</option>
+                        <option value="6">六周</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="num" class="col-sm-2 col-form-label col-form-label-lg">选择训练时间</label>
+                <div class="col-sm-10">
+                    <select class="input" id="num">
+                        <option value="1">一周一次</option>
+                        <option value="2">一周两次</option>
+                        <option value="3">一周三次</option>
+                        <option value="4">一周四次</option>
+                        <option value="5">一周五次</option>
+                        <option value="6">一周六次</option>
+                        <option value="7">一周七次</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="dataline" class="col-sm-2 col-form-label col-form-label-lg">截止开班天数</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-lg" id="dataline" placeholder="整数">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="amount" class="col-sm-2 col-form-label col-form-label-lg">班级总价格</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-lg" id="amount" placeholder="数字">
+                </div>
+            </div>
+        </form>
 
     </div>
-    <br><br>
+    <div  align="center">
+        <button align="center" onclick="goAddField()" name="sub" class="btn">添加</button><br><br>
+        <button align="center" class="btn"  onclick="javascript:history.back(-1);">返回</button>
+    </div>
+</div>
 </div>
 </body>
 <script>
@@ -68,7 +130,6 @@
         var numbers=parseInt(days)
         date.setTime(date.setDate(date.getDate()+numbers));
         dataline=date.getFullYear() + sep + (date.getMonth() + 1) + sep + date.getDate()+ ' ' + date.getHours() + s + date.getMinutes() + s + date.getSeconds();
-
         var d = new Date(dataline);//当前的时间
         var longtime = jQuery("#longtime").val();
         d.setTime(d.setDate((d.getDate()+(longtime*7))));

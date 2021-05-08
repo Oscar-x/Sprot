@@ -19,10 +19,21 @@ public class FieldController {
     @Resource
     private FieldDao fieldDao;
 
+    private static  final  int LEN = 10;
+
     @RequestMapping("/fieldList")//从其他页面操作后返回列表页面（重复登录）
-    public String refresh(Model model){
-        List<Field> fieldList = fieldDao.FindAll();
-        model.addAttribute("list",fieldList);
+    public String refresh(Model model,Integer page){
+        if (page==null){
+            page = 1;
+        }
+        int offset = (page-1)*LEN;
+        List<Field> fieldListPage = fieldDao.selectFieldPage(offset,LEN);
+        int pageCount= fieldDao.countFieldPage();
+        pageCount =(int) Math.ceil(pageCount/LEN);
+        pageCount++;
+        model.addAttribute("fieldListPage",fieldListPage);
+        model.addAttribute("fieldPageCount",pageCount);
+
         return "user/fieldList";//
     }
 

@@ -2,28 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jz.table.dao.ClassDao">
     <select id="FindAll" resultType="com.jz.table.entity.ClassInfo">
-        select * from class;
+        select *
+        from class;
     </select>
 
     <select id="selectCoach" resultType="com.jz.table.entity.ClassInfo">
-        select * from class where coachid = #{id};
+        select *
+        from class
+        where coachid = #{id};
     </select>
 
-    <insert id="addClass"  parameterType="com.jz.table.entity.ClassInfo">
-        INSERT INTO class(project,class_name,class_num,statu,coachid,addtime,traintime,dataline,classgoal,trainnum,amount) VALUES (#{project},#{class_name},#{class_num},0,#{coachid},#{addtime},#{traintime},#{dataline},#{classgoal},#{trainnum},#{amount})
-        </insert>
+    <insert id="addClass" parameterType="com.jz.table.entity.ClassInfo">
+        INSERT INTO class(project, class_name, class_num, statu, coachid, addtime, traintime, dataline, classgoal,
+                          trainnum, amount)
+        VALUES (#{project}, #{class_name}, #{class_num}, 0, #{coachid}, #{addtime}, #{traintime}, #{dataline},
+                #{classgoal}, #{trainnum}, #{amount})
+    </insert>
 
-    <select id="findById" parameterType="java.lang.Integer" resultType="com.jz.table.entity.ClassInfo">
-          SELECT  * FROM class where classid = #{id}
-        </select>
 
     <update id="updateClass" parameterType="com.jz.table.entity.ClassInfo">
-          update  class SET project=#{project},class_name=#{class_name},class_num=#{class_num} WHERE classid = #{classid}
-        </update>
+        update class
+        SET project=#{project},
+            class_name=#{class_name},
+            class_num=#{class_num}
+        WHERE classid = #{classid}
+    </update>
 
     <delete id="delClass" parameterType="java.lang.Integer">
-         DELETE from class WHERE classid = #{id}
-        </delete>
+        DELETE
+        from class
+        WHERE classid = #{id}
+    </delete>
 
     <resultMap id="MyClassById" type="com.jz.table.entity.ClassInfo">
         <id column="classid" property="classid"></id>
@@ -49,20 +58,107 @@
         </collection>
     </resultMap>
 
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.jz.table.entity.ClassInfo">
+        SELECT *
+        FROM class
+        where classid = #{id}
+    </select>
+
     <select id="getClassByCoachId" resultMap="MyClassById">
-        select * from class s join coach c ON s.coachid=c.coachid WHERE s.coachid=#{id}
+        select *
+        from class s
+                 join coach c ON s.coachid = c.coachid
+        WHERE s.coachid = #{id}
     </select>
 
     <select id="openClass" resultMap="MyClassById">
-        select * from class s join coach c ON s.coachid=c.coachid WHERE s.statu = 0;
---         select * from class where statu = 0;
+        select *
+        from class s
+                 join coach c ON s.coachid = c.coachid
+        WHERE s.statu = 0;
+    </select>
+    <select id="sortbasketball" resultMap="MyClassById">
+        select *
+        from class s
+                 join coach c ON s.coachid = c.coachid
+        WHERE s.statu = 0
+          and s.project = "篮球";
+    </select>
+    <select id="sortSwim" resultMap="MyClassById">
+        select *
+        from class s
+                 join coach c ON s.coachid = c.coachid
+        WHERE s.statu = 0
+          and s.project = "游泳";
     </select>
 
+    <select id="sortLongrun" resultMap="MyClassById">
+        select *
+        from class s
+                 join coach c ON s.coachid = c.coachid
+        WHERE s.statu = 0
+          AND (s.project = "女子800m" OR s.project = "男子1000m");
+    </select>
+    <select id="sortJump" resultMap="MyClassById">
+        select *
+        from class s
+                 join coach c ON s.coachid = c.coachid
+        WHERE s.statu = 0
+          AND s.project = "立定跳远";
+    </select>
+
+    <select id="sortPullup" resultMap="MyClassById">
+        select *
+        from class s
+                 join coach c ON s.coachid = c.coachid
+        WHERE s.statu = 0
+          AND s.project = "引体向上";
+    </select>
+
+    <select id="sortSolidball" resultMap="MyClassById">
+        select *
+        from class s
+                 join coach c ON s.coachid = c.coachid
+        WHERE s.statu = 0
+          AND s.project = "实心球";
+    </select>
+
+    <select id="sortAllClass" resultMap="MyClassById">
+        select *
+        from class s
+                 join coach c ON s.coachid = c.coachid
+        WHERE s.statu = 0
+    </select>
+
+    <select id="searchClass" resultMap="MyClassById">
+        select *
+        from class s
+                 join coach c ON s.coachid = c.coachid
+        WHERE s.statu = 0
+          AND (s.project = #{content}
+            or s.class_name = #{content}
+            or c.coach_name = #{content});
+    </select>
+
+
     <select id="getClassId" resultMap="MyClassById">
-        select * from class s join coach c ON s.coachid=c.coachid WHERE s.classid=#{id}
+        select *
+        from class s
+                 join coach c ON s.coachid = c.coachid
+        WHERE s.classid = #{id}
     </select>
 
     <update id="closeclass" parameterType="com.jz.table.entity.ClassInfo">
-        update  class SET statu=1  WHERE classid = #{classid}
+        update class
+        SET statu=1
+        WHERE classid = #{classid}
     </update>
+
+    <select id="selectClassPage" resultType="com.jz.table.entity.ClassInfo" >
+        SELECT * FROM class limit #{param1}, #{param2};
+    </select>
+
+    <select id="countClassPage" resultType="int">
+        SELECT count(*) FROM class
+    </select>
 </mapper>

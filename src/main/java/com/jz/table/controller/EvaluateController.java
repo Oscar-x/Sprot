@@ -1,6 +1,7 @@
 package com.jz.table.controller;
 
 import com.jz.table.dao.EvaluateDao;
+import com.jz.table.entity.Coach;
 import com.jz.table.entity.Evaluate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +16,25 @@ import java.util.List;
 public class EvaluateController {
     @Resource
     private EvaluateDao evaluateDao;
+    private static  final  int LEN = 10;
 
     @RequestMapping("/evaluateList")//从其他页面操作后返回列表页面（重复登录）
-    public String refresh(Model model){
+    public String refresh(Model model,Integer page){
         List<Evaluate> evaluateList = evaluateDao.FindAll();
         model.addAttribute("list",evaluateList);
+
+        if (page==null){
+            page = 1;
+        }
+        int offset = (page-1)*LEN;
+        List<Evaluate> evaluateListPage = evaluateDao.selectEvaluatePage(offset,LEN);
+        int pageCount= evaluateDao.countEvaluatePage();
+        pageCount =(int) Math.ceil(pageCount/LEN);
+        pageCount++;
+        model.addAttribute("evaluateListPage",evaluateListPage);
+        model.addAttribute("evaluatePageCount",pageCount);
+
+
         return "user/evaluateList";//
     }
 

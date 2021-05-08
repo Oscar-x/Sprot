@@ -58,7 +58,6 @@
                                 <li><a href="/qtindex">主页</a></li>
                                 <li><a href="/tips">提分技巧</a></li>
                                 <li><a href="/classs">加入班级</a></li>
-                                <li><a href="/theory">理论测试</a></li>
                                 <li><a href="/about">关于我们</a></li>
                                 <li><a href="/myInfo">我的信息</a></li>
                             </ul>
@@ -73,7 +72,7 @@
 </header>
 
 <div style="padding-top: 1px">
-    <div style="background-color: #2D93CA;width: 80%;height: 420px;margin: 10% 10%;">
+    <div style="background-color: #2D93CA;width: 80%;height: 350px;margin: 10% 10%;">
         <div th:each="user:${userlogon}">
             <br>
             <span>用户名:</span>&nbsp;&nbsp;&nbsp;<span><td  align="center" th:text="${user.account}"></td></span><br><br><br>
@@ -88,7 +87,7 @@
 <div>
     <h1>我的班级</h1>
     <div>
-        <table width="100%" border="1" cellspacing="0" th:each="class:${list}">
+        <table width="100%" border="1" cellspacing="0">
             <thead>
             <tr>
                 <th>id</th>
@@ -99,65 +98,48 @@
                 <th>添加时间</th>
                 <th>开始训练时间</th>
                 <th>训练结束时间</th>
-            <tr>
-                <td  align="center" th:text="${class.classid}"></td>
-                <td  align="center" th:text="${class.class_name}"></td>
-                <td  align="center" th:text="${class.class_num}"></td>
-                <td  align="center" th:text="${class.project}"></td>
-                <td  align="center" th:text="${class.statu}" style="color: #ac2925"></td>
-                <td  align="center" th:text="${class.addtime}"></td>
-                <td  align="center" th:text="${class.dataline}"></td>
-                <td  align="center" th:text="${class.traintime}"></td>
-            </tr>
-            </tr>
-            <tr >
                 <th>班级目标</th>
                 <th>每周训练次数</th>
                 <th>班级价格</th>
-                <th>教练</th>
-            <tr>
-                <td  align="center" th:text="${class.classgoal}"></td>
-                <td  align="center" th:text="${class.trainnum}"></td>
-                <td  align="center" th:text="${class.amount}"></td>
-                <td  align="center" th:text="${class.coachs.coach_name}"></td>
-                <td><a href="/evaluationCoach">查看教练详情</a></td>
+                <th>教练名</th>
+                <th>操作</th>
             </tr>
-
-
+            <tr th:each="content:${conlist}">
+                <td  align="center" th:text="${content.id}"></td>
+                <td  align="center" th:text="${content.classes.class_name}"></td>
+                <td  align="center" th:text="${content.classes.class_num}"></td>
+                <td  align="center" th:text="${content.classes.project}"></td>
+                <td  align="center" th:text="${content.classes.statu}" style="color: #ac2925"></td>
+                <td  align="center" th:text="${content.classes.addtime}"></td>
+                <td  align="center" th:text="${content.classes.dataline}"></td>
+                <td  align="center" th:text="${content.classes.traintime}"></td>
+                <td  align="center" th:text="${content.classes.classgoal}"></td>
+                <td  align="center" th:text="${content.classes.trainnum}"></td>
+                <td  align="center" th:text="${content.classes.amount}"></td>
+                <td  align="center" th:text="${content.classes.coachs.coach_name}"></td>
+                <td><a th:href="@{'/evaluationCoach/'+${content.classes.coachs.coachid}}">查看教练详情</a></td>
             </tr>
             </thead>
         </table>
-<!--        <table width="100%" border="1" cellspacing="0">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>id</th>-->
-<!--                <th>班级名</th>-->
-<!--                <th>班级人数</th>-->
-<!--                <th>项目</th>-->
-<!--                <th>状态</th>-->
-<!--                <th>添加时间</th>-->
-<!--                <th>开始训练时间</th>-->
-<!--                <th>训练结束时间</th>-->
-<!--                <th>班级目标</th>-->
-<!--                <th>每周训练次数</th>-->
-<!--                <th>班级价格</th>-->
-<!--            </tr>-->
-<!--            <tr th:each="content:${conlist}">-->
-<!--                <td  align="center" th:text="${content.id}"></td>-->
-<!--                <td  align="center" th:text="${class.class_name}"></td>-->
-<!--                <td  align="center" th:text="${class.class_num}"></td>-->
-<!--                <td  align="center" th:text="${class.project}"></td>-->
-<!--                <td  align="center" th:text="${class.statu}" style="color: #ac2925"></td>-->
-<!--                <td  align="center" th:text="${class.addtime}"></td>-->
-<!--                <td  align="center" th:text="${class.dataline}"></td>-->
-<!--                <td  align="center" th:text="${class.traintime}"></td>-->
-<!--                <td  align="center" th:text="${class.classgoal}"></td>-->
-<!--                <td  align="center" th:text="${class.trainnum}"></td>-->
-<!--                <td  align="center" th:text="${class.amount}"></td>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--        </table>-->
-
+    </div>
+</div>
+<br><br><br><br><br><br>
+<div>
+    <h1>教练每日评价</h1>
+    <div>
+        <table width="100%" border="1" cellspacing="0">
+            <thead>
+            <tr>
+                <th>教练名</th>
+                <th>评价</th>
+            </tr>
+            <tr th:each="assess:${assesslist}">
+                <td  align="center" th:text="${assess.coaches.coach_name}"></td>
+                <td  align="center" th:text="${assess.content}"></td>
+                <td  align="center" th:text="${assess.updatetime}"></td>
+            </tr>
+            </thead>
+        </table>
     </div>
 </div>
 <div class="footer">

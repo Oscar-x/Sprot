@@ -1,6 +1,7 @@
 package com.jz.table.dao;
 
 import com.jz.table.entity.Admin;
+
 import java.util.List;
 
 
@@ -17,4 +18,9 @@ public interface AdminDao {
     int updateAdmin(Admin admin);
     //删除
     int delAdmin(Integer id);
+
+    //分页查询
+    List<Admin> selectAdminPage(Integer start, Integer len);
+    //总条数
+    int countAdminPage();
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jz.table.dao.AssessDao">
+
+    <select id="FindAll" resultType="com.jz.table.entity.Assess">
+        select * from assess where userid=#{id};
+    </select>
+
+    <insert id="addAssess"  parameterType="com.jz.table.entity.Assess">
+        INSERT INTO assess(userid,content,coachid,updatetime) VALUES (#{userid},#{content},#{coachid},#{updatetime})
+    </insert>
+
+    <resultMap id="CoachAssess" type="com.jz.table.entity.Assess">
+        <id column="id" property="id"></id>
+        <result column="coachid" property="coachid"></result>
+        <result column="userid" property="userid"></result>
+        <result column="content" property="content"></result>
+        <result column="updatetime" property="updatetime"></result>
+        <collection property="coaches" ofType="com.jz.table.entity.Coach">
+            <id column="coachid" property="coachid"></id>
+            <result column="coach_name" property="coach_name"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getByUerId" resultMap="CoachAssess">
+        select * from assess a join coach c ON a.coachid=c.coachid where a.userid=#{id}
+    </select>
+
+</mapper>

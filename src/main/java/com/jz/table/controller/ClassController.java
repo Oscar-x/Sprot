@@ -2,6 +2,7 @@ package com.jz.table.controller;
 
 import com.jz.table.dao.ClassDao;
 import com.jz.table.entity.ClassInfo;
+import com.jz.table.entity.Coach;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,11 +17,22 @@ import java.util.List;
 public class ClassController {
     @Resource
     private ClassDao classDao;
-
+    private static  final  int LEN = 10;
     @RequestMapping("/classList")
-    public String refresh(Model model){
+    public String refresh(Model model,Integer page){
         List<ClassInfo> classList = classDao.FindAll();
         model.addAttribute("list",classList);
+
+        if (page==null){
+            page = 1;
+        }
+        int offset = (page-1)*LEN;
+        List<ClassInfo> classListPage = classDao.selectClassPage(offset,LEN);
+        int pageCount= classDao.countClassPage();
+        pageCount =(int) Math.ceil(pageCount/LEN);
+        pageCount++;
+        model.addAttribute("classListPage",classListPage);
+        model.addAttribute("classPageCount",pageCount);
         return "user/classList";//
     }
 
@@ -59,6 +71,6 @@ public class ClassController {
     @RequestMapping("/godelClass/{id}")//删除
     public String delClass(@PathVariable("id") Integer id){
         classDao.delClass(id);
-        return "public/Classsc";
+        return "qtuser/index";
     }
 }

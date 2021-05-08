@@ -21,5 +21,10 @@ public interface CoachDao {
     //登录判断
     Coach coachLogin(Coach coach);
 
-    List<Coach> selectCoach(Integer id);
+    //分页查询
+    List<Coach> selectCoachPage(Integer start,Integer len);
+    //总条数
+    int countCoachPage();
+    //注册
+    int addCoaches(Coach coach);
 }

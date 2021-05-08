@@ -9,6 +9,7 @@
     <link rel="dns-prefetch" href="http://cdn01.weipaitang.com/"/>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" media="all"/>
     <link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <title>加入班级</title>
 
     <style type="text/css">
@@ -17,13 +18,6 @@
             padding: 0;
             font-family: Microsoft Yahei, Arial, Simsun, Helvetica, Segoe UI, sans-serif;
         }
-
-        /*.mainbody {*/
-        /*    clear: both;*/
-        /*    margin: 0 20px;*/
-        /*    padding: 5px 0 0 0;*/
-        /*}*/
-
         .sort {
             font-size: 18px;
             margin: 40px;
@@ -79,7 +73,6 @@
                                 <li><a href="/qtindex">主页</a></li>
                                 <li><a href="/tips">提分技巧</a></li>
                                 <li><a href="/classs">加入班级</a></li>
-                                <li><a href="/theory">理论测试</a></li>
                                 <li><a href="/about">关于我们</a></li>
                                 <li><a href="/myInfo">我的信息</a></li>
                             </ul>
@@ -95,25 +88,23 @@
 <div class="mainbody">
     <div class="title" style="background-color: #1E4592;width: 100%;height: 100px">
         <ul class="nav navbar-nav">
-            <li class="sort">全部班级</li>
-            <li class="sort">
-                <select id="project" onclick="goSelect()">
-                <option value="1" >长跑</option>
-                <option value="2" >游泳</option>
-                <option value="3" >篮球</option>
-                <option value="4" >立定跳远</option>
-                <option value="5" >引体向上</option>
-                <option value="6">实心球</option>
-            </select></li>
-            <li><button onclick="goSelect()">确认</button></li>
+            <li class="sort"><a href="/classs">全部班级</a></li>
+            <li class="sort"><a href="/basketball">篮球</a></li>
+            <li class="sort"><a href="/longrun">长跑</a></li>
+            <li class="sort"><a href="/swin">游泳</a></li>
+            <li class="sort"><a href="/Jump">立定跳远</a></li>
+            <li class="sort"><a href="/Pullup">引体向上</a></li>
+            <li class="sort"><a href="/Solidball">实心球</a></li>
+            <li><input type=text autofocus id="search_input">
+                <button class="anniu" onclick="searchClass()">搜索</button></li>
         </ul>
 
     </div>
     <div style="padding-top: 10px">
         <table style="padding-top: 20px;padding-bottom: 20px">
             <tr th:each="class:${list}" style="background-color: #00b4ef;width: 100%;height: 100px;">
-                <td style="background-color: rgba(93,106,92,0.93);width: 80px;height: 80px;padding: 20px 20px"><img
-                        src="../images/篮球.png" alt="logo" class="img-responsive"
+                <td style="background-color: rgba(93,106,92,0.93);width: 130px;height: 130px;padding: 20px 20px"><img
+                        src="../images/260x260.jpg" alt="logo" class="img-responsive"
                         style="width: 45px;height: 45px;float: left;"/></td>
                 <td style="padding-bottom: 40px">班级名：</td>
                 <td align="center" th:text="${class.class_name}" style="padding-bottom: 40px"></td>
@@ -142,20 +133,18 @@
             height="auto"></iframe>
 </div>
 </div>
-
 <script>
 
-    function goSelect() {
-        var project1 = $("#project").val();
-        alert(project1)
-
-        // $.post("/addClass",{project:project},function (res){
-        //     if (res===true){
-        //         alert("添加成功")
-        //     }else {
-        //         alert("添加失败，请检查数据重试！");
-        //     }
-        // })
+    function searchClass() {
+        var project = $("#search_input").val();
+        alert(project);
+        $.post("/searchClass",{content:project},function (res) {
+            if (res==true) {
+                window.location.href="/searchClass";
+            }else {
+                alert("没有收索到相关班级");
+            }
+        })
     }
 
 </script>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>添加评论</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link href="../assets/onepage/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link href="../assets/onepage/css/style.css" rel="stylesheet">
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+    <style>
+        .classInfo{
+            font-size: 150%;
+            background-color: rgba(255,167,196,0.04);
+        }
+        .btn1{
+            border-radius: 3px;
+            height: 37px;
+            width: 258px;
+            padding: 1px 7px 2px 7px;
+            box-sizing: content-box;
+            border: none;
+            background-color:rgb(136,210,48) ;
+            color: white;
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 70%;height: auto;margin:0 auto;background-color: rgba(59,106,103,0.07);padding-top: 20px">
+<div class="prices-block content content-center">
+    <div class="container">
+        <h2 class="margin-bottom-50" > 教练<strong>评价</strong></h2>
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="classInfo" style="background-color: rgba(90,106,56,0.48)" scope="col">内容</th>
+                    <th class="classInfo" style="background-color: rgba(90,106,56,0.48)" scope="col">评价时间</th>
+                    <!--                        <th class="classInfo" scope="col">评价时间</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="assess:${assesslist}">
+                    <th class="classInfo" th:text="${assess.content}"></th>
+                    <th class="classInfo" th:text="${assess.updatetime}"></th>
+                </tr>
+                </tbody>
+            </table>
+            <div class="title" >
+                <span style="font-size: 200%;color: rgba(255,140,175,0.64)" >添加评论</span>
+            </div>
+            <div class="main">
+                <input type="hidden" id="userid" th:value="${userid}">
+                <textarea style="width: 50%;height: auto;margin:0 auto;" cols="30" rows="3" class="input" placeholder="请输入内容" id="content"/></textarea><br><br>
+                <input type="hidden" id="coachid" th:value="${coachid}">
+                <button onclick="goAddField()" name="sub" class="btn1" >评论</button>
+                <br><br>
+                <button class="btn1" name="button" onclick="javascript:history.back(-1);">返回上一页</button>
+            </div>
+            <br><br><br><br><br><br>
+        </div>
+
+
+    </div>
+</div>
+</div>
+
+</body>
+<script>
+    var date = new Date();
+    var sep = "-";
+    var s=":"
+    var year = date.getFullYear(); //获取完整的年份(4位)
+    var month = date.getMonth() + 1; //获取当前月份(0-11,0代表1月)
+    var day = date.getDate(); //获取当前日
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    if (month <= 9) {
+        month = "0" + month;
+    }
+    if (day <= 9) {
+        day = "0" + day;
+    }
+    var addtime = year + sep + month + sep + day +" "+ hours + s+ minutes + s + seconds;
+
+    function goAddField() {
+        var coachid = $("#coachid").val();
+        var content = $("#content").val();
+        var userid = $("#userid").val();
+        $.post("/addAssess", {userid: userid, content: content, coachid: coachid,updatetime:addtime}, function (res) {
+            if (res === true) {
+                alert("添加成功");
+                window.location.reload();
+            } else {
+                alert("添加失败，请检查数据重试！");
+            }
+        })
+    }
+</script>
+</html>

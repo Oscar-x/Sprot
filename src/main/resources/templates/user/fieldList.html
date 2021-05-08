@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>首页</title>
     <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" href="./css/layui.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
 </head>
 
@@ -15,10 +16,10 @@
         <button class="anniu" onclick="return search()">搜索</button>
     </form>
 </div>
-<br><br><br><br>
+<br><br><br><br><br><br><br><br>
 <div style="width: auto;height: 30px;background-color:#9F9F9F"></div>
-<h1>场地基本信息维护</h1><button  onclick="refresh()" class="refresh">刷新</button><br>
-<table width="100%" border="1" cellspacing="0">
+<h1 style="font-size: 40px">场地基本信息维护</h1><button  onclick="refresh()" class="refresh">刷新</button><br>
+<table class="layui-table">
     <thead>
     <tr>
         <th>id</th>
@@ -27,7 +28,7 @@
         <th>价 格</th>
         <th>操 作</th>
     </tr>
-    <tr th:each="field:${list}">
+    <tr th:each="field:${fieldListPage}">
         <td  align="center" th:text="${field.fieldid}"></td>
         <td  align="center" th:text="${field.project}"></td>
         <td  align="center" th:text="${field.address}"></td>
@@ -38,19 +39,15 @@
     </tr>
     </thead>
 </table>
-<ul class="pagination">
-    <li><a href="#">«</a></li>
-    <li><a class="active" href="#">1</a></li>
-    <li><a  href="#">2</a></li>
-    <li><a href="#">...</a></li>
-    <li><a href="#">»</a></li>
-</ul>
+<div th:value="${fieldPageCount}">
+    <ul th:each="index : ${#numbers.sequence(1, fieldPageCount)}" class="pagination" style="margin: 5px">
+        <li><a th:href="@{'/fieldList?page='+${index}}"> [(${index})]</a></li>
+    </ul>
+</div>
 </body>
 <script>
-
     function refresh() {
         window.location.href = "/fieldList"
     }
-
 </script>
 </html>

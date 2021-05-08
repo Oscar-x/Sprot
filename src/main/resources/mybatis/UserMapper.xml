@@ -3,44 +3,61 @@
 <mapper namespace="com.jz.table.dao.UserDao">
 
     <select id="userlogin" parameterType="com.jz.table.entity.UserInfo" resultType="com.jz.table.entity.UserInfo">
-        select * FROM userinfo WHERE account = #{account} AND user_pwd = #{user_pwd};
+        select *
+        FROM userinfo
+        WHERE account = #{account}
+          AND user_pwd = #{user_pwd};
     </select>
 
     <select id="FindAll" resultType="com.jz.table.entity.UserInfo">
-      select * from userinfo
-  </select>
+        select *
+        from userinfo
+    </select>
 
-    <insert id="adduser"  parameterType="com.jz.table.entity.UserInfo">
-       INSERT INTO userinfo(account,user_pwd,age,sex,phone,email) VALUES (#{account},#{user_pwd},#{age},#{sex},#{phone},#{email})
+    <insert id="adduser" parameterType="com.jz.table.entity.UserInfo">
+        INSERT INTO userinfo(account, user_pwd, age, sex, phone, email)
+        VALUES (#{account}, #{user_pwd}, #{age}, #{sex}, #{phone}, #{email})
     </insert>
 
-    <insert id="addusers"  parameterType="com.jz.table.entity.UserInfo">
-       INSERT INTO userinfo(account,user_pwd) VALUES (#{account},#{user_pwd})
+    <insert id="addusers" parameterType="com.jz.table.entity.UserInfo">
+        INSERT INTO userinfo(account, user_pwd)
+        VALUES (#{account}, #{user_pwd})
     </insert>
 
     <select id="findByid" parameterType="java.lang.Integer" resultType="com.jz.table.entity.UserInfo">
-      SELECT  * FROM userinfo where userid = #{id}
+        SELECT *
+        FROM userinfo
+        where userid = #{id}
     </select>
 
     <update id="updateUser" parameterType="com.jz.table.entity.UserInfo">
-      update  userinfo SET account=#{account},user_pwd=#{user_pwd},age =#{age},sex=#{sex},phone=#{phone},email=#{email} WHERE userid = #{userid}
+        update userinfo
+        SET account=#{account},
+            user_pwd=#{user_pwd},
+            age =#{age},
+            sex=#{sex},
+            phone=#{phone},
+            email=#{email}
+        WHERE userid = #{userid}
     </update>
 
     <delete id="delUser" parameterType="java.lang.Integer">
-     DELETE from userinfo where userid = #{id}
+        DELETE
+        from userinfo
+        where userid = #{id}
     </delete>
 
-    <update id="joinclass" parameterType="com.jz.table.entity.UserInfo">
-        update  userinfo SET classid=#{classid} WHERE userid = #{userid}
-    </update>
+        <select id="selectPage" resultType="com.jz.table.entity.UserInfo" >
+          SELECT * FROM userinfo limit #{param1}, #{param2};
+      </select>
 
-<!--    <select id="selectPage" resultType="com.jz.table.entity.UserInfo">-->
-<!--      SELECT * FROM userinfo limit #{param1}, #{param2}-->
-<!--  </select>-->
+        <select id="countPage" resultType="int">
+          SELECT count(*) FROM userinfo
+      </select>
 
-<!--    <select id="count" resultType="int">-->
-<!--      SELECT count(*) FROM userinfo-->
-<!--  </select>-->
+    <select id="searchUser" resultType="com.jz.table.entity.UserInfo" >
+        select * from userinfo WHERE account LIKE #{param1} limit #{param2}, #{param3};
+    </select>
 
 
 </mapper>

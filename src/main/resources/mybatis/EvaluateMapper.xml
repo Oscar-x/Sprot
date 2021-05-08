@@ -36,4 +36,12 @@
         select * from evaluate e join userinfo u ON e.userid=u.userid where e.coachid=#{id}
     </select>
 
+    <select id="selectEvaluatePage" resultType="com.jz.table.entity.Evaluate" >
+        SELECT * FROM evaluate limit #{param1}, #{param2};
+    </select>
+
+    <select id="countEvaluatePage" resultType="int">
+        SELECT count(*) FROM evaluate
+    </select>
+
 </mapper>

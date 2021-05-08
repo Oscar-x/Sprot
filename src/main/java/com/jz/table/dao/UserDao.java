@@ -22,11 +22,12 @@ public interface UserDao {
     //注册
     int addusers(UserInfo user);
 
-    int joinclass(Integer classid,Integer userid);
+    //分页查询
+    List<UserInfo> selectPage(Integer start,Integer len);
+    //总条数
+    int countPage();
 
-//    //分页查询
-//    List<UserInfo> selectPage(Integer start,Integer size);
-//    //总条数
-//    int count();
+    //搜索
+    List<UserInfo>  searchUser(String key,Integer start,Integer len);
 
 }

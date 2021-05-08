@@ -24,4 +24,14 @@
     <delete id="delAdmin" parameterType="java.lang.Integer">
          DELETE from admin WHERE id = #{id}
     </delete>
+
+    <select id="selectAdminPage" resultType="com.jz.table.entity.Admin" >
+        SELECT * FROM admin limit #{param1}, #{param2};
+    </select>
+
+    <select id="countAdminPage" resultType="int">
+        SELECT count(*) FROM admin
+    </select>
+
+
 </mapper>

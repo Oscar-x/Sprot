@@ -70,7 +70,6 @@ li{
 
 .silder_1{ width: 100%;}
 .front{ width: 100%; overflow: hidden;}
-.fontLeft{width: 2%; background: #ffc000; float: left; height: 3.8em;}
 .fontRight{ width: 98%; background: #35ad4f; float: left; height: 3.8em;}
 .fontRight p{ font-size: 1.8em; font-weight: 500; color: white; line-height: 2em; text-indent: 1em;}
 .list{ width: 85%; margin: 0 auto; padding:30px 0 0; }

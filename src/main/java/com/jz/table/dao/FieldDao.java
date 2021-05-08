@@ -16,4 +16,9 @@ public interface FieldDao {
     int updateField(Field field);
     //删除
     int delField(Integer id);
+
+    //分页查询
+    List<Field> selectFieldPage(Integer start,Integer len);
+    //总条数
+    int countFieldPage();
 }

@@ -2,6 +2,7 @@ package com.jz.table.controller;
 
 import com.jz.table.dao.AdminDao;
 import com.jz.table.entity.Admin;
+import com.jz.table.entity.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +18,25 @@ public class AdminController {
 
     @Resource
     private AdminDao ad;
+    private static  final  int LEN = 10;
 
     @RequestMapping("/AdminList")//从其他页面操作后返回列表页面（重复登录）
-    public String refresh(Model model){
+    public String refresh(Model model,Integer page){
         List<Admin> adminList = ad.FindAll();
         model.addAttribute("list",adminList);
+
+
+        if (page==null){
+            page = 1;
+        }
+        int offset = (page-1)*LEN;
+        List<Admin> adminListPage = ad.selectAdminPage(offset,LEN);
+        int pageCount= ad.countAdminPage();
+        pageCount =(int) Math.ceil(pageCount/LEN);
+        pageCount++;
+        model.addAttribute("adminListPage",adminListPage);
+        model.addAttribute("adminPageCount",pageCount);
+
         return "user/adminList";//
     }
     @RequestMapping("/goAddAdmin")//去添加页面

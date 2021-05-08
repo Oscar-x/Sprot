@@ -6,6 +6,15 @@ public class Evaluate {
     private Integer userid;
     private Integer coachid;
     private String content;
+    Class classes;
+
+    public Class getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Class classes) {
+        this.classes = classes;
+    }
     UserInfo users;
 
     public UserInfo getUsers() {

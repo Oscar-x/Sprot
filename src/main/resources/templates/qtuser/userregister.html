@@ -21,16 +21,11 @@
     <link rel="stylesheet" type="text/css" href="../css/login.css"/>
 </head>
 <body>
-<!--<h2>账号注册</h2>-->
-<!--请输入姓名：<input type="text" id="name"/><br><br>-->
-<!--请输入密码：<input type="password" id="password" placeholder="仅支持整数" /><br><br>-->
-<!--请确认密码：<input type="password" id="passwordTwo" placeholder="仅支持整数"/><br><br>-->
-
 
 <div class="containers">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
-            <form class="form-horizontal" method="post" action="/gouserlogin" style="width: 500px;margin: auto;" >
+            <form class="form-horizontal" method="post" style="width: 500px;margin: auto;" >
                 <span class="heading">用户注册</span>
                 <div class="form-group">
                     <input type="text" class="form-control" id="name" name="name" placeholder="请输入用户名" required>
@@ -47,7 +42,7 @@
                     <a href="#" class="fa fa-question-circle"></a>
                 </div>
                 <div class="form-group">
-                    <button class="button" onclick="register()">注册</button>&nbsp;<button  class="button"  onclick="javascript:history.back(-1);">返回</button>
+                    <button type="button" class="button" onclick="register()">注册</button>&nbsp;<button  class="button"  onclick="javascript:history.back(-1);">返回</button>
                 </div>
             </form>
         </div>
@@ -61,13 +56,13 @@
         var name = $("#name").val();
         var password1 = $("#password").val();
         var password2 = $("#passwordTwo").val();
-        if (password1 == null){
-            alert("密码不能为空")
-        }
-        else{
-            if (Number(password1) == Number(password2)){
+        if(name.length === 0||password1.length===0){
+            alert("用户名或密码不能为空")
+        }else {
+            if (password1 === password2){
                 $.post("/addUsers",{account:name,user_pwd:password1},function (res) {
-                    if (res ==true){
+                    console.log(res)
+                    if (res ===true){
                         alert("注册成功");
                         window.location.href ="/userlogin";
                     } else {

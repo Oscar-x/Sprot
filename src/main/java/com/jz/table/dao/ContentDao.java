@@ -9,4 +9,7 @@ public interface ContentDao {
 
     List<Content> myClass(Integer id);
 
+    int joinClass(Integer classid,Integer userid);
+
+    List<Content> CoachUser(Integer id);
 }

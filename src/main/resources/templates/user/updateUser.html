@@ -23,7 +23,7 @@
         <input class="input" placeholder="请输入电话号码" id="phone" th:value="${user.phone}"/><br><br>
         <input class="input" placeholder="请输入邮箱地址" id="email" th:value="${user.email}"/><br><br>
         <button id="btn1" onclick="goupdate()">修改</button><br><br>
-        <button id="btn2" onclick="back()">返回</button>
+        <button id="btn2" name="button"  onclick="javascript:history.back(-1);">返回</button>
     </div>
 <br><br>
 </div>
@@ -40,7 +40,7 @@
         $.post("/update",{userid:userid,account:account,user_pwd:user_pwd,age:age,sex:sex,phone:phone,email,email},function (res) {
             if (res==true) {
                 alert("修改成功");
-                window.location.href="/userlist";
+                history.go(-1);
             }else {
                 alert("修改失败，请检查数据重试！");
             }
