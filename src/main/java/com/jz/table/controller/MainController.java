@@ -179,8 +179,9 @@ public class MainController {
 
         return "user/userlist";//
     }
-    @RequestMapping("/searchUser")
-    public String searchUser(String key,Model model,Integer page){
+    @RequestMapping("/searchUser/{key}")
+    public String searchUser(@PathVariable("key")String key,Model model,Integer page){
+
         key="%"+key+"%";
         System.out.println("key--->>>"+key);
         if (page==null){
